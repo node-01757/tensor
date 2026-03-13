@@ -1,0 +1,153 @@
+{
+  "id": "il_custode",
+  "label": "Il Custode",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore ha qualcuno che dipende da lui. Proteggerlo limita la sua libertà. Lasciarlo libero lo espone al rischio. La scena non chiede quanto tieni a lui — chiede di chi è davvero la protezione.",
+    "anthropological_roots": [
+      "teoria dell'attaccamento — stili parentali (Bowlby, Ainsworth)",
+      "etologia parentale — investimento parentale vs autonomia del figlio (Trivers)",
+      "antropologia familiare — protezione come controllo sociale",
+      "psicologia del caregiving — altruismo vs bisogno di controllo"
+    ],
+    "narrative_signature": "la cura come atto ambiguo — può essere dono o possesso, e il confine non è mai dichiarato"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "proteggere vs lasciare andare",
+    "real_conflict": "cura autentica per l'altro vs bisogno di controllo mascherato da cura",
+    "apparent_dimension": "protezione_vs_abbandono",
+    "dominant_latent_dimension": "controllo_vs_autonomia_relazionale"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.9
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "Emerge in varianti in cui la scelta del custode è influenzata da norma sociale — 'cosa fanno i buoni genitori'."
+    }
+  ],
+
+  "requires": {
+    "description": "Prototipo ad alta desiderabilità sociale. Usabile da sessione 1 per osservazione grezza, ma il segnale reale su controllo_vs_accettazione richiede contesto comparativo.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 1,
+        "rationale": "La dimensione protezione_vs_interesse_personale è leggibile da subito. La dimensione latente controllo_vs_accettazione richiede almeno un'altra osservazione in dominio diverso per non essere sovrainterpretata."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_testimone",
+        "min_observations": 2,
+        "rationale": "Chi protegge attivamente un dipendente ma ignora uno sconosciuto in difficoltà rivela che la protezione è relazionale, non morale. Questo è il reveal più potente del Custode."
+      },
+      {
+        "prototype_id": "il_figlio",
+        "min_observations": 2,
+        "rationale": "Chi esercita controllo sui dipendenti ma si ribella alle figure di autorità su di sé rivela la natura asimmetrica del bisogno di controllo. Contraddizione ad alta intensità — usare solo dopo sessione 10."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 1,
+    "max": 5,
+    "default": 3,
+    "note": "Il Custode regge l'intensità alta meglio del Testimone perché il conflitto è relazionale e il giocatore ha un legame dichiarato con l'altro personaggio. Intensità 5 ammessa dopo sessione 6."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["familiare", "genitorialità", "coppia"],
+    "allowed_contexts": ["lavorativo", "amicale", "animali"],
+    "hard_exclusions": ["contesti anonimi", "sconosciuti senza legame stabilito"],
+    "note": "Il Custode richiede un legame preesistente dichiarato nella scena. Senza dipendenza esplicita il conflitto collassa — il giocatore non ha nulla da proteggere e nulla da controllare."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è protezione più intelligente né abbandono più coraggioso. È una scelta che cambia la struttura della relazione invece di operare dentro di essa. Esempio: non accompagnare e non lasciare andare — chiedere cosa vuole lui. Il valore è nel rifiuto della cornice custode/dipendente.",
+
+  "trigger_conditions": [
+    "la scena deve dichiarare esplicitamente un legame di dipendenza o responsabilità",
+    "non usare consecutivamente con il_complice in sessione ad alta intensità — sovraccarico relazionale",
+    "preferibile come seconda o terza scena di sessione, non come apertura — richiede che il giocatore sia già entrato nel registro emotivo"
+  ],
+
+  "contraindications": [
+    "non usare in sessioni in cui il_corpo_mortale è già presente — la sovrapposizione su controllo_vs_accettazione produce rumore nel profilo",
+    "se il profilo emergente indica già forte segnale su controllo_vs_accettazione, abbassare l'intensità default a 2 per evitare attivazione difensiva"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "La scena segnala chiaramente che 'lasciare andare' è la scelta giusta — linguaggio, tono, o struttura narrativa rendono la protezione eccessiva visibilmente patologica. Il giocatore sceglie per desiderabilità, non per pattern.",
+      "mitigation": "Entrambe le scelte devono essere difendibili. La protezione deve sembrare ragionevole. Il rischio dell'autonomia deve essere reale, non simbolico."
+    },
+    {
+      "type": "editorial",
+      "severity": "medium",
+      "detectability": "low",
+      "description": "La scena usa un legame troppo intenso — figlio gravemente malato, partner in pericolo reale. L'intensità emotiva satura il segnale e misura gestione dell'ansia, non pattern di controllo.",
+      "mitigation": "Il rischio deve essere ordinario. La posta in gioco deve essere reale ma non drammatica. Il Custode funziona meglio in situazioni quotidiane dove la protezione è discrezionale, non obbligata."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge protezione ripetuta come pattern di controllo quando può essere cultura familiare, genere, o contesto sociale specifico. Una madre che accompagna il figlio può stare performando una norma, non esprimendo un bisogno di controllo.",
+      "mitigation": "Richiedere min_distinct_domains 2 e almeno una osservazione in contesto non familiare prima di stabilizzare controllo_vs_accettazione su questo segnale."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "high",
+      "description": "Il finale mostra conseguenze negative della scelta di lasciare andare — il figlio si fa male, il partner sbaglia. Il sistema punisce narrativamente l'autonomia e distorce le scelte future.",
+      "mitigation": "I finali del Custode mostrano la reazione emotiva del giocatore alla scelta, non le conseguenze oggettive per l'altro. Le conseguenze per l'altro sono sempre ambigue o fuori campo."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "social_desirability",
+      "severity": "high",
+      "note": "Il Custode è il prototipo con il bias di desiderabilità sociale più alto del pool sociale. 'Proteggere' è quasi universalmente codificato come virtù. Il segnale reale emerge quasi esclusivamente da scene mascherate o da varianti in cui la protezione ha un costo personale dichiarato."
+    },
+    {
+      "type": "gender_norm_interference",
+      "severity": "medium",
+      "note": "Le aspettative di genere sul caregiving distorcono il segnale in modo sistematico e non casuale. Non correggibile a livello di singola scena — richiede cross-validation su contesti e generi diversi prima di stabilizzare il profilo."
+    },
+    {
+      "type": "cultural_norm_interference",
+      "severity": "medium",
+      "note": "In culture ad alto contesto familiare, protezione estesa è norma, non pattern individuale. Il sistema deve calibrare le soglie di stabilità in funzione del contesto culturale del giocatore quando disponibile."
+    }
+  ],
+
+  "editorial_notes": [
+    "la parola chiave da evitare nel testo della scena è 'preoccupazione' — segnala troppo chiaramente la dimensione in gioco",
+    "il personaggio dipendente non deve essere passivo — deve volere qualcosa di specifico che confligge con la protezione",
+    "la terza scelta kobayashi deve cambiare la struttura della relazione, non trovare una via di mezzo tra le prime due",
+    "il Custode è l'unico prototipo in cui la scelta apparentemente altruista può essere il segnale più forte di bisogno di controllo — questa inversione va protetta con cura editoriale"
+  ]
+}

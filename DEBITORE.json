@@ -1,0 +1,171 @@
+{
+  "id": "il_debitore",
+  "label": "Il Debitore",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Qualcuno ti ha aiutato quando ne avevi bisogno. Ora fa qualcosa di sbagliato. La scena non chiede se è colpevole — chiede quanto vale quello che ti ha dato, e a chi appartiene quel debito.",
+    "anthropological_roots": [
+      "antropologia del dono — obbligo, reciprocità, debito simbolico (Mauss)",
+      "teoria della reciprocità evolutiva — tit-for-tat e cooperazione condizionale (Axelrod, Trivers)",
+      "psicologia morale — fondamento lealtà vs fondamento equità in conflitto (Haidt)",
+      "sociologia del legame — capitale sociale e norma di reciprocità (Putnam, Gouldner)"
+    ],
+    "narrative_signature": "il debito morale come valuta opaca — non si sa mai esattamente quanto vale, né quando scade, né se è trasferibile"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "coprire chi ti ha aiutato vs fare la cosa giusta",
+    "real_conflict": "lealtà personale come obbligo privato vs giustizia come norma collettiva che non conosce il debito",
+    "apparent_dimension": "lealta_vs_tradimento",
+    "dominant_latent_dimension": "obbligo_relazionale_vs_norma_collettiva"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "lealta_vs_giustizia",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6,
+      "note": "Coprire l'altro può essere lealtà autentica o protezione del proprio capitale relazionale. La distinzione è quasi impossibile da osservare in una singola scena — richiede pattern comparativo."
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5,
+      "note": "In varianti lavorative, denunciare o non denunciare attiva anche la dimensione di autonomia rispetto alla norma istituzionale. Chi denuncia può farlo per regola, non per convinzione morale."
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "La terza scelta — avvisare senza denunciare — è spesso un pattern di evitamento del confronto diretto mascherato da soluzione di compromesso."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Debitore richiede che il giocatore abbia già un modello di relazione interpersonale attivo. Usabile da sessione 2. Il segnale su lealta_vs_giustizia è leggibile abbastanza presto, ma la dimensione latente obbligo_relazionale richiede confronto con almeno un prototipo del territorio sistemi per non essere scambiata con semplice norma-following.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 2,
+        "rationale": "Sessione 1 non fornisce contesto relazionale sufficiente. Il debito morale richiede che il sistema abbia già qualcosa su come il giocatore gestisce i legami."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_testimone",
+        "min_observations": 2,
+        "rationale": "Chi copre un debito privato ma non interviene per uno sconosciuto rivela che la sua morale è relazionale, non universale. Contraddizione ad alta leggibilità — il giocatore la sente anche prima che il sistema la nomini."
+      },
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi protegge attivamente i dipendenti ma copre comportamenti scorretti di chi lo ha aiutato rivela una gerarchia di lealtà implicita. La protezione non è universale — ha una direzione e una storia."
+      },
+      {
+        "prototype_id": "il_ribelle",
+        "min_observations": 2,
+        "rationale": "Chi rifiuta la cornice imposta dalle istituzioni ma obbedisce al debito personale rivela che il suo reframing è selettivo — rifiuta le regole del sistema ma non le regole della tribù."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 2,
+    "max": 5,
+    "default": 3,
+    "note": "Il Debitore non funziona a intensità 1 — senza posta reale il debito non pesa. Intensità minima consigliata 2. Intensità 5 ammessa quando l'azione sbagliata dell'altro ha conseguenze su terzi identificabili, non astratti."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["lavorativo", "amicale_storico"],
+    "allowed_contexts": ["familiare", "professionale_formale"],
+    "hard_exclusions": [
+      "legami recenti — il debito deve avere una storia",
+      "contesti in cui la denuncia è obbligo legale esplicito — elimina l'ambiguità morale"
+    ],
+    "note": "Il Debitore richiede un legame con storia. Un collega che ti ha aiutato due settimane fa non genera debito narrativamente credibile. Il tempo implicito del debito deve essere percepibile nel setup senza essere dichiarato."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta canonica — avvisare senza denunciare — è spesso percepita come kobayashi ma non lo è. È una via di mezzo socialmente accettabile. La vera kobayashi rifiuta la cornice debito/lealtà: esempio, rendere pubblico il problema senza nominare la persona, o restituire esplicitamente il debito con un altro atto per poi agire liberamente. Il valore è nel rifiuto dell'obbligo come struttura, non nel trovare un equilibrio tra le prime due opzioni.",
+
+  "trigger_conditions": [
+    "la scena deve dichiarare esplicitamente o suggerire fortemente la storia del debito — senza questo il conflitto è piatto",
+    "non usare nella stessa sessione del Testimone ad alta intensità — entrambi attivano conformismo_vs_autonomia e il segnale si sovrappone",
+    "preferibile come scena centrale o finale di sessione — richiede che il giocatore sia già nel registro morale"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha già forte segnale stabilizzato su lealta_vs_giustizia — rischio di conferma senza nuovo apprendimento",
+    "evitare varianti in cui il comportamento scorretto dell'altro è grave e visibile — la gravità ovvia elimina l'ambiguità e misura solo tolleranza alla complicità, non struttura del debito"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il comportamento scorretto dell'altro è troppo grave — frode grave, danno a persone vulnerabili, reato evidente. Il giocatore non sceglie in base al debito ma in base alla gravità oggettiva. Il segnale misura soglia di tolleranza morale, non struttura della lealtà.",
+      "mitigation": "Il comportamento scorretto deve essere ambiguo nella gravità. Falsificare un dato, prendere un merito non proprio, omettere un'informazione — non reati gravi o danni irreversibili."
+    },
+    {
+      "type": "editorial",
+      "severity": "medium",
+      "detectability": "low",
+      "description": "Il debito originale è troppo grande — il collega ti ha salvato il lavoro in un momento esistenziale, il padre ti ha mantenuto agli studi per anni. La sproporzione rende la copertura quasi obbligata narrativamente e elimina la tensione reale.",
+      "mitigation": "Il debito deve essere reale ma proporzionato. Un favore significativo, non un salvataggio epico. La grandezza del debito deve essere percepita, non dichiarata."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge copertura del debito come lealtà relazionale quando può essere paura delle conseguenze personali, conformismo al gruppo, o semplice evitamento del conflitto. La dimensione protezione_vs_interesse_personale e confronto_vs_fuga producono lo stesso comportamento osservabile.",
+      "mitigation": "Richiedere pattern su almeno tre osservazioni del Debitore in contesti diversi prima di stabilizzare lealta_vs_giustizia. Cross-validare con scene del Testimone per distinguere lealtà da evitamento."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "medium",
+      "description": "Il finale mostra conseguenze della denuncia — il collega perde il lavoro, la relazione si rompe. Il costo della giustizia diventa così alto da distorcere le scelte nelle scene successive verso la copertura.",
+      "mitigation": "Le conseguenze della denuncia restano fuori campo o ambigue. Il finale mostra la reazione interna del giocatore, non le conseguenze esterne per l'altro."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "social_desirability",
+      "severity": "medium",
+      "note": "Il Debitore ha desiderabilità sociale più bassa del Custode perché entrambe le scelte sono difendibili pubblicamente. 'Non tradisco chi mi ha aiutato' è altrettanto valorizzato di 'faccio la cosa giusta'. Questo rende il segnale più pulito rispetto ad altri prototipi sociali."
+    },
+    {
+      "type": "in_group_loyalty_bias",
+      "severity": "high",
+      "note": "L'intensità del bias di lealtà al gruppo varia enormemente per cultura, contesto professionale e storia personale. In culture ad alta coesione sociale il debito è una struttura normativa, non una scelta individuale. Richiede calibrazione contestuale prima di contribuire a reveal comparativi cross-culturali."
+    },
+    {
+      "type": "third_option_avoidance_masking",
+      "severity": "medium",
+      "note": "La terza scelta — avvisare senza denunciare — viene scelta spesso non come reframing ma come evitamento del costo delle prime due. Il kobayashi_note del prototipo deve essere usato per distinguere le due intenzioni a livello editoriale. A livello di profiling, il timing della scelta C è il segnale discriminante: scelta rapida suggerisce evitamento, scelta lenta suggerisce elaborazione."
+    }
+  ],
+
+  "interpretive_warning": "La terza scelta — avvisare senza denunciare — è la risposta più frequente e la meno informativa. Non è né lealtà né giustizia: è gestione dell'ansia da conflitto. Trattarla come segnale neutro, non come posizione morale intermedia.",
+
+  "editorial_notes": [
+    "il debito non va mai dichiarato esplicitamente nel setup — va suggerito attraverso dettagli relazionali ('ti ha aiutato quando nessun altro lo avrebbe fatto')",
+    "il comportamento scorretto dell'altro deve avere una ragione comprensibile anche se non giustificabile",
+    "evitare la parola 'tradire' nel testo della scena — pre-orienta verso il frame sbagliato",
+    "il Debitore è il prototipo che meglio rivela se la morale del giocatore è universale o tribale — questa è la sua funzione primaria nel pool"
+  ]
+}

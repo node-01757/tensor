@@ -1,0 +1,155 @@
+/* ============================================
+   TENSOR — Reveal & Summary Styles
+   ============================================ */
+
+/* ---- REVEAL SCREEN ---- */
+
+.reveal-content {
+  text-align: center;
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.reveal-heading {
+  font-family: var(--font-system);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.reveal-ghost {
+  font-family: var(--font-system);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+.reveal-ghost .ghost-line {
+  opacity: 0;
+  animation: reveal-fade-in 0.8s ease forwards;
+  margin-bottom: 12px;
+}
+
+.reveal-observations {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.reveal-observation {
+  font-family: var(--font-narrative);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.7;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  opacity: 0;
+  animation: reveal-fade-in 0.8s ease forwards;
+}
+
+.reveal-observation:last-child {
+  border-bottom: none;
+}
+
+@keyframes reveal-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#btn-continue {
+  margin-top: 1rem;
+  opacity: 0;
+  animation: reveal-fade-in 0.8s ease 1.5s forwards;
+}
+
+/* ---- SUMMARY SCREEN ---- */
+
+.summary-content {
+  max-width: var(--max-width);
+  width: 100%;
+  text-align: center;
+}
+
+.summary-heading {
+  font-family: var(--font-system);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.summary-observations {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.summary-observation {
+  font-family: var(--font-narrative);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.7;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.summary-dimensions {
+  margin-bottom: 2rem;
+}
+
+.dimension-bar {
+  margin-bottom: 16px;
+}
+
+.dimension-label {
+  font-family: var(--font-system);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.dimension-track {
+  height: 3px;
+  background: var(--border-subtle);
+  position: relative;
+  border-radius: 2px;
+}
+
+.dimension-track .marker {
+  position: absolute;
+  top: -3px;
+  width: 9px;
+  height: 9px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: left 0.6s ease;
+}
+
+.summary-note {
+  font-family: var(--font-system);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+#btn-restart {
+  margin-top: 1rem;
+}

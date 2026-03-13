@@ -1,0 +1,79 @@
+/* ============================================
+   TENSOR — Timer Styles
+   SVG ring countdown with phase colors
+   ============================================ */
+
+.timer-container {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.timer-ring {
+  width: 64px;
+  height: 64px;
+  transform: rotate(-90deg);
+}
+
+.timer-ring-bg {
+  fill: none;
+  stroke: var(--border-subtle);
+  stroke-width: 3;
+}
+
+.timer-ring-progress {
+  fill: none;
+  stroke: var(--safe);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 326.73;
+  stroke-dashoffset: 0;
+  transition: stroke 0.3s ease;
+}
+
+.timer-ring-progress.warn {
+  stroke: var(--warn);
+}
+
+.timer-ring-progress.danger {
+  stroke: var(--danger);
+  animation: timer-pulse 0.5s infinite;
+}
+
+@keyframes timer-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-system);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.timer-container.hidden {
+  visibility: hidden;
+}
+
+.timer-expired-text {
+  font-family: var(--font-system);
+  font-size: 0.75rem;
+  color: var(--danger);
+  text-align: center;
+  padding: 8px 0;
+  opacity: 0;
+  animation: fade-in-out 2.5s ease forwards;
+}
+
+@keyframes fade-in-out {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TENSOR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/timer.css">
+  <link rel="stylesheet" href="css/reveal.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="game-header" class="hidden">
+    <span class="header-title">TENSOR</span>
+    <span class="token-display">
+      <span class="token-icon">&#9670;</span>
+      <span id="token-count">3</span>
+    </span>
+  </header>
+
+  <!-- SCREEN: TITLE -->
+  <div id="screen-title" class="screen active">
+    <div class="title-content">
+      <h1 class="game-title">TENSOR</h1>
+      <p class="tagline">&laquo; Ogni scelta dice chi sei. &raquo;</p>
+      <button id="btn-start" class="btn-primary">Inizia</button>
+      <p class="subtitle">Un esperimento narrativo</p>
+    </div>
+  </div>
+
+  <!-- SCREEN: POV SELECT -->
+  <div id="screen-pov" class="screen">
+    <div class="pov-content">
+      <h2 class="pov-heading">Di chi vuoi essere?</h2>
+      <p class="pov-subheading">Stessa settimana. Altro sguardo.</p>
+      <div id="pov-cards" class="pov-cards"></div>
+    </div>
+  </div>
+
+  <!-- SCREEN: PLAY -->
+  <div id="screen-play" class="screen">
+    <div class="play-header">
+      <div class="play-header-left">
+        <span id="scene-title" class="scene-title-label"></span>
+      </div>
+      <div id="timer-container" class="timer-container hidden">
+        <svg class="timer-ring" viewBox="0 0 120 120">
+          <circle class="timer-ring-bg" cx="60" cy="60" r="52"/>
+          <circle id="timer-ring-progress" class="timer-ring-progress" cx="60" cy="60" r="52"/>
+        </svg>
+        <span id="timer-text" class="timer-text">12</span>
+      </div>
+    </div>
+    <div id="narrative-area" class="narrative-area"></div>
+    <div id="choices-area" class="choices-area hidden"></div>
+    <div id="ghost-event" class="ghost-event hidden"></div>
+  </div>
+
+  <!-- SCREEN: SUMMARY / FINAL REVEAL -->
+  <div id="screen-summary" class="screen">
+    <div class="summary-content">
+      <h2 class="summary-heading">Il gioco osserva.</h2>
+      <div id="summary-observations" class="summary-observations"></div>
+      <div id="summary-dimensions" class="summary-dimensions"></div>
+      <p class="summary-note">Queste sono osservazioni, non diagnosi. Il gioco non sa chi sei. Sa come hai scelto.</p>
+      <button id="btn-restart" class="btn-primary">Altro sguardo</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
