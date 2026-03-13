@@ -1,0 +1,144 @@
+{
+  "id": "il_traditore",
+  "label": "Il Traditore",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore ha un patto — esplicito o implicito — con qualcuno. La situazione lo mette nella condizione in cui romperlo è vantaggioso, razionale, o addirittura giusto. La scena non chiede se sei leale. Chiede quanto costa la lealtà quando tradire è la scelta intelligente.",
+    "anthropological_roots": [
+      "teoria dei giochi — dilemma del prigioniero iterato (Axelrod)",
+      "psicologia evoluzionistica — free-rider detection e punizione altruistica (Cosmides, Tooby)",
+      "sociologia della fiducia — tradimento come rottura del contratto sociale implicito (Luhmann)",
+      "filosofia morale — il tradimento come atto che ridefinisce retroattivamente il legame (Shklar)"
+    ],
+    "narrative_signature": "il momento in cui il vantaggio personale e la giustificazione morale si allineano perfettamente — e l'unica cosa che resta è il patto"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "mantenere il patto vs rompere il patto",
+    "real_conflict": "identità relazionale vs identità autonoma — chi sei quando il legame non ti conviene più",
+    "apparent_dimension": "lealta_vs_opportunismo",
+    "dominant_latent_dimension": "protezione_vs_interesse_personale"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "lealta_vs_giustizia",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.8,
+      "note": "Il tradimento può essere auto-conservazione mascherata da scelta morale. La distinzione è nel timing: chi tradisce veloce protegge sé, chi tradisce lento ha elaborato il costo."
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5,
+      "note": "Chi tradisce senza comunicarlo all'altro evita il confronto. Chi tradisce dichiarandolo lo affronta. Stesso atto, segnale diverso."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Traditore richiede un patto preesistente credibile. Non funziona senza storia relazionale. Usabile da sessione 3.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 3,
+        "rationale": "Il segnale su lealta_vs_giustizia ha bisogno di contesto comparativo con il Debitore o il Custode per non essere sovrainterpretato."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_debitore",
+        "min_observations": 2,
+        "rationale": "Chi copre un debito ma tradisce un patto quando conviene rivela che la lealtà è strumentale, non strutturale. Contraddizione a media intensità."
+      },
+      {
+        "prototype_id": "il_complice",
+        "min_observations": 2,
+        "rationale": "Chi è complice di un sistema ma tradisce un individuo rivela una gerarchia: la complicità di gruppo pesa più del patto personale."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 2,
+    "max": 5,
+    "default": 3,
+    "note": "A intensità 1 il patto è troppo debole per generare tensione. Intensità 5 richiede che il tradimento abbia conseguenze visibili su una terza persona che non ha scelto di essere coinvolta."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["lavorativo", "amicale_storico", "coppia"],
+    "allowed_contexts": ["familiare", "professionale_formale"],
+    "hard_exclusions": [
+      "patti recenti o superficiali — il tradimento di un accordo di ieri non è un tradimento, è un ripensamento",
+      "contesti in cui il patto è illegale — il tradimento di un'associazione criminale è giustizia, non tradimento morale"
+    ],
+    "note": "Il patto deve essere moralmente neutro o positivo nella sua origine. Tradire un patto sporco non misura lealtà — misura soglia di complicità."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è tradire a metà o tradire meglio. È un'azione che rende visibile il patto — esempio: dichiarare pubblicamente il conflitto di interessi senza scegliere un lato, o restituire il vantaggio del patto prima di romperlo. Il valore è nel rifiuto della segretezza come struttura del tradimento.",
+
+  "trigger_conditions": [
+    "la scena deve dichiarare o suggerire un patto con storia — non un accordo recente",
+    "il vantaggio del tradimento deve essere concreto e comprensibile — non astratto",
+    "non usare nella stessa sessione del Debitore ad alta intensità — sovrapposizione su lealta_vs_giustizia"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha forte segnale stabilizzato su lealta_vs_giustizia in direzione giustizia — il giocatore tradirà per coerenza con il profilo, non per pattern reale",
+    "evitare in sessioni dove il Custode è presente ad alta intensità — il sovraccarico relazionale distorce il segnale"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il tradimento è chiaramente la scelta giusta — l'altro ha violato il patto prima, o il patto era iniquo. Il giocatore non tradisce — corregge un'ingiustizia. Segnale nullo.",
+      "mitigation": "Il patto deve essere stato onorato da entrambe le parti. L'altro non deve aver dato motivo di rottura. Il tradimento deve essere puro: vantaggioso ma non giustificabile."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge mantenimento del patto come lealtà quando può essere paura delle conseguenze della rottura, dipendenza economica, o inerzia relazionale.",
+      "mitigation": "Cross-validare con scene del Ribelle. Chi mantiene patti ma non sfida le regole esterne probabilmente opera per evitamento, non per lealtà."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "high",
+      "description": "Il finale mostra l'altro che scopre il tradimento e reagisce con dolore visibile. La colpa distorce le scelte future verso la lealtà per compensazione.",
+      "mitigation": "Le conseguenze del tradimento restano ambigue. L'altro non sa, o sa ma non reagisce come previsto."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "social_desirability",
+      "severity": "medium",
+      "note": "Il Traditore ha desiderabilità bilanciata — 'non tradisco' è valorizzato, ma 'faccio la scelta intelligente' lo è altrettanto in contesti lavorativi. Il segnale è più pulito che nel Custode."
+    },
+    {
+      "type": "loss_aversion",
+      "severity": "high",
+      "note": "L'avversione alla perdita pesa più del guadagno del tradimento. Chi mantiene il patto può farlo per paura di perdere la relazione, non per valore del legame. Il response time è il discriminante: mantenimento rapido suggerisce avversione alla perdita."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'tradire' nel testo della scena — il frame deve emergere dal giocatore, non dal narratore",
+    "il vantaggio del tradimento deve essere tangibile ma non enorme — se è troppo grande, la scelta diventa razionale e il segnale morale si perde",
+    "la scena migliore del Traditore è quella in cui il giocatore non si accorge di star tradendo finché non l'ha già fatto"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "id": "il_figlio",
+  "label": "Il Figlio",
+  "archetype_family": "sistemi",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è sotto un'autorità che ha potere reale sulla sua vita. Non un capo qualunque — qualcuno che ha formato chi sei. La scena non chiede se l'autorità ha ragione — chiede se riesci a distinguere la tua voce dalla sua.",
+    "anthropological_roots": [
+      "psicologia dello sviluppo — individuazione e separazione (Mahler, Winnicott)",
+      "psicoanalisi — complesso edipico come struttura del rapporto con l'autorità (Freud, Lacan)",
+      "sociologia dell'educazione — riproduzione sociale e habitus (Bourdieu)",
+      "antropologia dell'iniziazione — il passaggio da dipendente a autonomo come rito (Van Gennep, Turner)"
+    ],
+    "narrative_signature": "il momento in cui ti accorgi che la voce nella tua testa che dice cosa è giusto non è la tua — e non sai se quella che resta dopo è più debole o più vera"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "obbedire all'autorità formativa vs seguire la propria valutazione",
+    "real_conflict": "autonomia come emancipazione vs autonomia come illusione — quanto di quello che chiami 'io' è tuo e quanto è stato messo lì",
+    "apparent_dimension": "rispetto_vs_ribellione",
+    "dominant_latent_dimension": "controllo_vs_accettazione"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0,
+      "note": "Obbedire all'autorità formativa è accettazione — ma anche arrendersi al controllo dell'altro. Disobbedire è controllo — ma anche emancipazione. L'inversione è il nucleo del prototipo."
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 0.9
+    },
+    {
+      "dimension_id": "compliance_vs_reframing",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6,
+      "note": "Il reframing del Figlio è diverso da quello del Ribelle — non rifiuta la regola, riscrive il rapporto con chi l'ha data."
+    },
+    {
+      "dimension_id": "lealta_vs_giustizia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "L'autorità formativa genera un debito identitario — diverso dal debito relazionale del Debitore. Qui il debito è esistenziale: ti ha fatto come sei."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Figlio richiede un'autorità con storia formativa — non un capo recente o un'istituzione astratta. Il legame deve essere strutturale, non episodico. Usabile da sessione 3.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 3,
+        "rationale": "La distinzione tra obbedienza formativa e conformismo generico richiede pattern su almeno due prototipi diversi."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi protegge i propri dipendenti con la stessa modalità dell'autorità da cui si è emancipato rivela che l'individuazione è incompleta — ha cambiato posizione, non pattern."
+      },
+      {
+        "prototype_id": "il_ribelle",
+        "min_observations": 2,
+        "rationale": "Chi si ribella alle regole istituzionali ma obbedisce all'autorità formativa rivela che la ribellione è superficiale — rifiuta le strutture impersonali ma non riesce a separare il sé dall'autorità che lo ha formato."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 2,
+    "max": 5,
+    "default": 3,
+    "note": "Il Figlio a intensità 1 non funziona — il legame formativo è troppo profondo per conflitti leggeri. Intensità 5 ammessa solo dopo sessione 8 e richiede che la disobbedienza abbia conseguenze sul legame stesso."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["familiare", "mentore_allievo", "maestro_apprendista"],
+    "allowed_contexts": ["lavorativo_storico", "istituzionale_formativo"],
+    "hard_exclusions": [
+      "autorità abusive — la scena misurerebbe trauma response, non pattern di individuazione",
+      "autorità incompetenti — il conflitto diventa troppo facile",
+      "autorità con cui il legame è recente — senza storia formativa il prototipo è vuoto"
+    ],
+    "note": "L'autorità del Figlio deve essere stata buona. Deve aver avuto ragione in passato. Il conflitto nasce non perché l'autorità è sbagliata ma perché il giocatore è cresciuto."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è obbedire meglio o disobbedire più elegantemente. È un'azione che ridefinisce il rapporto — esempio: dichiarare esplicitamente all'autorità che stai scegliendo diversamente non per rifiuto ma per crescita. Il valore è nel riconoscimento reciproco, non nella rottura o nella sottomissione.",
+
+  "trigger_conditions": [
+    "l'autorità deve aver formato il giocatore — non essere una figura di potere generica",
+    "il conflitto deve riguardare una scelta che l'autorità ha già fatto per il giocatore in passato e che ora il giocatore vuole fare diversamente",
+    "non usare nella stessa sessione del Ribelle — la sovrapposizione sull'autorità come oggetto è troppo alta"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha pattern consistente di obbedienza alle autorità — il prototipo non aggiungerà segnale",
+    "evitare in sessioni dove il Debitore è presente ad alta intensità — il debito identitario e il debito relazionale si confondono"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "L'autorità è presentata come rigida, antiquata, o fuori contatto. La disobbedienza diventa un aggiornamento necessario, non una scelta morale.",
+      "mitigation": "L'autorità deve avere ragione nel suo contesto. La sua visione deve essere difendibile. Il conflitto è tra due verità, non tra verità e errore."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge disobbedienza come individuazione completata quando può essere reattanza adolescenziale, provocazione, o bisogno di attenzione dall'autorità stessa.",
+      "mitigation": "Il response time è il discriminante principale. Disobbedienza impulsiva suggerisce reattanza. Disobbedienza elaborata suggerisce individuazione. Cross-validare con il Ribelle."
+    },
+    {
+      "type": "narrative",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il finale mostra l'autorità che approva la disobbedienza — 'sono fiero di te'. La benedizione dell'autorità annulla il costo della separazione e distorce il segnale.",
+      "mitigation": "L'autorità non approva e non condanna. La sua reazione è ambigua. Il giocatore non riceve conferma che ha fatto bene."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "generational_framing",
+      "severity": "medium",
+      "note": "Giocatori più giovani tendono a disobbedire per default. Giocatori più adulti tendono a obbedire per empatia con l'autorità. Il segnale va calibrato per età percepita quando disponibile."
+    },
+    {
+      "type": "narrative_individuation_bias",
+      "severity": "high",
+      "note": "In contesti narrativi occidentali l'individuazione è sempre positiva — separarsi dall'autorità è crescere. Questo bias culturale distorce il segnale. Scene in contesti non occidentali o non individualistici producono segnale più pulito."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'crescere' o 'maturare' nel testo della scena — il giudizio sulla direzione non spetta al narratore",
+    "l'autorità deve parlare — non essere un'astrazione. Una frase, una voce, un gesto specifico",
+    "il Figlio è il prototipo che meglio rivela se il giocatore ha un rapporto irrisolto con chi l'ha formato — il dato è potente e va trattato con rispetto",
+    "la scena migliore del Figlio è quella in cui il giocatore obbedisce e scopre che la voce dell'autorità è diventata la propria"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "il_soldato",
+  "label": "Il Soldato",
+  "archetype_family": "sistemi",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore ha ricevuto un ordine. L'ordine viene da una struttura legittima — non corrotta, non malvagia, solo cieca nel punto in cui il giocatore vede. La scena non chiede se l'ordine è giusto — chiede cosa fai quando eseguirlo richiede di spegnere qualcosa dentro di te.",
+    "anthropological_roots": [
+      "psicologia dell'obbedienza — agency e stato agenico (Milgram)",
+      "filosofia morale — responsabilità individuale dentro sistemi gerarchici (Arendt, Bauman)",
+      "sociologia militare — identità di ruolo e dissonanza cognitiva nell'esecuzione (Grossman)",
+      "etica delle organizzazioni — il dilemma del whistleblower come struttura ricorrente (Near, Miceli)"
+    ],
+    "narrative_signature": "il momento in cui il ruolo che hai scelto ti chiede di fare qualcosa che la persona che eri prima del ruolo non avrebbe fatto"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "eseguire l'ordine vs rifiutarlo",
+    "real_conflict": "identità di ruolo vs identità personale — quando il ruolo ti ha formato così profondamente che rifiutarlo è rifiutare te stesso",
+    "apparent_dimension": "obbedienza_vs_coscienza",
+    "dominant_latent_dimension": "compliance_vs_reframing"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "compliance_vs_reframing",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.7,
+      "note": "L'obbedienza nel Soldato non è conformismo sociale — è adesione a un sistema di valori interiorizzato. La distinzione è fondamentale e il profiling deve tenerne conto."
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6,
+      "note": "Eseguire l'ordine può essere fuga dalla responsabilità della scelta. Rifiutarlo può essere confronto con il sistema. Ma anche il contrario: eseguire è affrontare le conseguenze, rifiutare è fuggire dal ruolo."
+    },
+    {
+      "dimension_id": "lealta_vs_giustizia",
+      "role": "secondary",
+      "measurement_mode": "direct",
+      "weight": 0.5,
+      "note": "Il Soldato attiva lealtà istituzionale, non personale. Diversa dal Debitore."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Soldato richiede che il giocatore abbia un ruolo con doveri. Non un lavoro qualsiasi — un'appartenenza che ha un costo e un significato. Usabile da sessione 4.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 4,
+        "rationale": "La distinzione tra obbedienza istituzionale e conformismo generico richiede baseline su almeno tre prototipi. Il Soldato senza contesto produce lo stesso segnale del Complice."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_ribelle",
+        "min_observations": 2,
+        "rationale": "Chi si ribella alle regole leggere ma esegue gli ordini pesanti rivela che la ribellione è proporzionale all'irrilevanza — più è basso il costo, più è facile dire no."
+      },
+      {
+        "prototype_id": "il_figlio",
+        "min_observations": 2,
+        "rationale": "Chi obbedisce all'autorità formativa ma rifiuta l'ordine istituzionale rivela che l'obbedienza è personale, non strutturale — il legame con chi comanda pesa più del ruolo."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 3,
+    "max": 5,
+    "default": 3,
+    "note": "Il Soldato non funziona sotto intensità 3 — ordini leggeri non generano dissonanza. Intensità 5 richiede che l'ordine abbia conseguenze irreversibili su persone identificabili."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["professionale_gerarchico", "istituzionale", "militare_metaforico"],
+    "allowed_contexts": ["sanitario", "educativo_formale"],
+    "hard_exclusions": [
+      "ordini palesemente illegali — misura soglia di complicità, non il dilemma del ruolo",
+      "contesti senza gerarchia reale — senza catena di comando non c'è il Soldato",
+      "ordini dati da figure corrotte note — il rifiuto è ovvio"
+    ],
+    "note": "Il Soldato funziona quando il sistema è legittimo e l'ordine è difendibile dal punto di vista del sistema. Il difetto è nel punto cieco — quello che il sistema non vede e il giocatore sì."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è disobbedire dall'interno. È un'azione che esegue l'ordine in un modo che ne rivela il punto cieco — esempio: obbedire alla lettera ma documentare le conseguenze, o eseguire e poi presentare al superiore quello che ha visto. Il valore è nel rifiuto della dicotomia eseguo/rifiuto — nella possibilità di essere fedeli al ruolo e alla coscienza nello stesso atto.",
+
+  "trigger_conditions": [
+    "il giocatore deve avere un ruolo definito con doveri espliciti",
+    "l'ordine deve provenire da una catena di comando legittima",
+    "il punto cieco dell'ordine deve essere visibile solo dal punto di vista del giocatore — non dal punto di vista del sistema",
+    "non usare nella stessa sessione del Ribelle — la sovrapposizione è quasi totale"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha forte segnale su compliance_vs_reframing già stabilizzato — il segnale non aggiunge informazione",
+    "evitare in sessioni con il Complice presente — il Soldato è un caso specifico di complicità e il segnale si sovrappone"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "L'ordine è presentato con conseguenze visibili e drammatiche. Il giocatore rifiuta per empatia con le vittime, non per pattern di compliance.",
+      "mitigation": "Le conseguenze dell'ordine devono essere indirette, ritardate, o visibili solo al giocatore. L'ordine stesso deve sembrare ragionevole."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge esecuzione dell'ordine come compliance quando può essere fiducia nella competenza del superiore, valutazione che il quadro più ampio giustifica l'azione, o lealtà al team.",
+      "mitigation": "Cross-validare con il Figlio. Chi obbedisce all'autorità formativa e all'autorità istituzionale ha un pattern di obbedienza. Chi obbedisce solo a una delle due ha un pattern relazionale, non strutturale."
+    },
+    {
+      "type": "narrative",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il finale rivela che l'ordine era sbagliato — le vittime appaiono, il danno è visibile. La colpa retrospettiva è il segnale più forte e il meno informativo — tutti si sentono in colpa dopo.",
+      "mitigation": "Il finale non rivela le conseguenze dell'ordine. Mostra il giocatore dopo la scelta — con il suo ruolo intatto e la sua domanda senza risposta."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "milgram_effect",
+      "severity": "high",
+      "note": "La struttura del Soldato replica intenzionalmente il paradigma di Milgram. Il bias di obbedienza all'autorità è il materiale del prototipo. Il segnale discriminante è: chi esegue con disagio ha un conflitto reale, chi esegue senza disagio ha interiorizzato il ruolo."
+    },
+    {
+      "type": "anti_authority_cultural_bias",
+      "severity": "medium",
+      "note": "In culture occidentali post-Norimberga 'ho solo eseguito gli ordini' è una non-difesa. Il giocatore rifiuta per condizionamento culturale, non per pattern personale. Scene in contesti non militari riducono questo bias."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'ordine' nel testo della scena — usare 'procedura', 'protocollo', 'indicazione'. Il frame militare distorce",
+    "il superiore non deve essere presente nella scena — l'ordine arriva da prima, il giocatore è solo con la sua esecuzione",
+    "il Soldato è il prototipo più pericoloso del pool: se scritto male, misura compliance culturale, non individuale. La cura editoriale richiesta è la più alta di tutti",
+    "la scena migliore del Soldato è quella in cui il giocatore esegue e poi non riesce a dormire"
+  ]
+}

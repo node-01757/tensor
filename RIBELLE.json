@@ -1,0 +1,144 @@
+{
+  "id": "il_ribelle",
+  "label": "Il Ribelle",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è di fronte a una regola, un'autorità, o una cornice imposta. La regola può essere giusta. L'autorità può avere ragione. Ma la struttura chiede obbedienza, non adesione. La scena non chiede se la regola è giusta — chiede se la rifiuti perché è sbagliata o perché è imposta.",
+    "anthropological_roots": [
+      "psicologia della reattanza — resistenza alla percezione di libertà limitata (Brehm)",
+      "filosofia politica — disobbedienza civile come atto fondativo (Thoreau, Arendt)",
+      "psicologia dello sviluppo — individuazione come separazione dall'autorità (Mahler, Jung)",
+      "sociologia dei movimenti — azione collettiva vs ribellione individuale (Olson, Tarrow)"
+    ],
+    "narrative_signature": "il rifiuto come atto identitario — non importa cosa rifiuti, importa che rifiutare ti definisca più di quello che costruisci dopo"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "obbedire vs disobbedire",
+    "real_conflict": "autonomia autentica vs reattanza — rifiuti perché hai valutato, o rifiuti perché qualcuno ti ha detto di accettare",
+    "apparent_dimension": "coraggio_vs_conformismo",
+    "dominant_latent_dimension": "compliance_vs_reframing"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "compliance_vs_reframing",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 0.9
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6,
+      "note": "La ribellione aperta è confronto. La ribellione silenziosa — non obbedire senza dichiararlo — è fuga mascherata da autonomia."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Ribelle richiede un'autorità identificabile e una regola specifica. Non funziona contro sistemi astratti — serve un volto o una voce. Usabile da sessione 2.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 2,
+        "rationale": "La distinzione tra autonomia autentica e reattanza richiede confronto con scene dove l'autonomia non è in risposta a un'imposizione."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_complice",
+        "min_observations": 2,
+        "rationale": "Chi si ribella all'autorità diretta ma resta dentro un sistema ingiusto rivela che la ribellione è personale, non morale. Rifiuta chi lo comanda ma accetta il sistema che lo paga."
+      },
+      {
+        "prototype_id": "il_debitore",
+        "min_observations": 2,
+        "rationale": "Chi rifiuta le regole del sistema ma obbedisce al debito personale rivela che il reframing è selettivo — le regole della tribù pesano più delle regole delle istituzioni."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 1,
+    "max": 5,
+    "default": 2,
+    "note": "Il Ribelle funziona bene anche a intensità bassa — una regola minuscola e stupida può generare un segnale pulito. Intensità 5 richiede che la ribellione abbia conseguenze irreversibili per il giocatore."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["istituzionale", "lavorativo", "educativo"],
+    "allowed_contexts": ["familiare", "sociale_strutturato"],
+    "hard_exclusions": [
+      "contesti di oppressione evidente — la ribellione è obbligata, non scelta",
+      "contesti anarchici o privi di struttura — senza regola non c'è ribellione"
+    ],
+    "note": "Il Ribelle funziona meglio quando la regola è difendibile. Se è ovviamente ingiusta, la ribellione non misura autonomia — misura buon senso."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è disobbedire meglio. È un'azione che ridefinisce la regola — esempio: obbedire alla lettera in modo che riveli l'assurdità della regola stessa, o proporre una regola alternativa dall'interno. Il valore è nel rifiuto della dicotomia obbedienza/ribellione.",
+
+  "trigger_conditions": [
+    "l'autorità deve essere identificabile — una persona, un ruolo, una voce",
+    "la regola deve essere difendibile — non assurda, non ingiusta, solo limitante",
+    "non usare consecutivamente con il Complice — la sovrapposizione su compliance_vs_reframing è totale"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente mostra già forte segnale su compliance_vs_reframing in direzione reframing — il giocatore si ribellerà per coerenza, non per pattern",
+    "evitare in sessioni dove il Figlio è presente — la sovrapposizione sull'autorità come oggetto è troppo alta"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "high",
+      "description": "L'autorità è presentata come incompetente, corrotta, o ridicola. La ribellione diventa l'unica scelta razionale e il segnale misura intelligenza, non pattern morale.",
+      "mitigation": "L'autorità deve avere ragione almeno in parte. La regola deve funzionare per qualcuno. Il costo dell'obbedienza deve essere sopportabile."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge obbedienza come conformismo quando può essere strategia, rispetto per la competenza altrui, o valutazione che la regola è effettivamente buona.",
+      "mitigation": "Richiedere pattern su almeno due scene del Ribelle in contesti diversi. Cross-validare con il Complice per distinguere obbedienza strategica da conformismo strutturale."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "medium",
+      "description": "Il finale celebra la ribellione — l'autorità crolla, il giocatore viene riconosciuto come coraggioso. La gratificazione narrativa distorce le scelte future verso la ribellione automatica.",
+      "mitigation": "Il finale non premia né punisce la ribellione. Mostra il mondo dopo la scelta — con le sue conseguenze ambigue e non conclusive."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "reactance",
+      "severity": "high",
+      "note": "La reattanza è il bias strutturale del Ribelle — il giocatore rifiuta per il semplice fatto che qualcosa viene imposto. Il segnale discriminante è: chi rifiuta anche le regole che condivide è in reattanza, chi rifiuta solo le regole che limita sta esercitando autonomia."
+    },
+    {
+      "type": "narrative_heroism_bias",
+      "severity": "medium",
+      "note": "In contesti narrativi il ribelle è quasi sempre l'eroe. Il giocatore sceglie la ribellione perché il genere lo condiziona, non perché il pattern è suo. Scene quotidiane e non eroiche riducono questo bias."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'ribelle' o 'coraggioso' nel testo della scena",
+    "l'autorità deve essere presentata con dignità — la caricatura uccide il segnale",
+    "il Ribelle è il prototipo che meglio distingue autonomia da reattanza — questa distinzione è il suo valore principale e va protetta con cura editoriale",
+    "la scena migliore del Ribelle è quella in cui il giocatore obbedisce e si sente a disagio"
+  ]
+}

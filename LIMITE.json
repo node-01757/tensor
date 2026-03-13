@@ -1,0 +1,159 @@
+{
+  "id": "il_limite",
+  "label": "Il Limite",
+  "archetype_family": "corpo",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è al confine di qualcosa — una capacità, una relazione, una pazienza, una tolleranza. Il confine non è esterno: è suo. La scena non chiede dove sta il limite — chiede cosa fai nell'istante in cui lo raggiungi. Perché quell'istante è l'unico in cui non puoi mentire.",
+    "anthropological_roots": [
+      "psicologia dei boundary — confini personali come struttura relazionale e identitaria (Cloud, Townsend)",
+      "filosofia del limite — finitudine come condizione dell'azione autentica (Jaspers, Ricoeur)",
+      "neuropsicologia della decisione — deplezione dell'ego e decision fatigue (Baumeister)",
+      "antropologia del rituale — il limite come soglia trasformativa (Turner, Van Gennep)"
+    ],
+    "narrative_signature": "il momento in cui hai dato tutto quello che potevi dare e qualcuno ti chiede ancora qualcosa — e la risposta non è sì o no, è: scopro chi sono quando non ho più niente"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "andare oltre vs fermarsi",
+    "real_conflict": "il confine come identità vs il confine come paura — non sai se ti fermi perché sei arrivato al tuo limite o perché hai paura di quello che c'è dopo",
+    "apparent_dimension": "generosita_vs_egoismo",
+    "dominant_latent_dimension": "controllo_vs_accettazione"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0,
+      "note": "Il Limite è dove controllo_vs_accettazione smette di essere una dimensione psicologica e diventa una domanda esistenziale."
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 0.8,
+      "note": "Al limite, la protezione degli altri e la protezione di sé diventano mutuamente esclusive. Questa è la forma più pura della dimensione."
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6,
+      "note": "Andare oltre il limite è confronto con sé. Fermarsi è — a seconda del contesto — confronto con l'altro che chiede o fuga dalla richiesta."
+    },
+    {
+      "dimension_id": "compliance_vs_reframing",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "La terza opzione — ridefinire cosa significa dare — è la forma più pura di reframing nel dominio corpo."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Limite richiede che il giocatore abbia già un contesto di investimento — tempo, energia, relazione — che ha consumato risorse. Non funziona a freddo. Usabile da sessione 5.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 5,
+        "rationale": "Il Limite è il prototipo di chiusura del territorio corpo. Richiede baseline complete su controllo_vs_accettazione e protezione_vs_interesse_personale per produrre segnale non ridondante."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_corpo_mortale",
+        "min_observations": 2,
+        "rationale": "Chi accetta il limite fisico ma non il limite relazionale — o viceversa — rivela che il confine non è uno solo. Il corpo e le relazioni hanno soglie diverse."
+      },
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi protegge senza limite i propri dipendenti ma ha limiti rigidi con gli estranei rivela che la generosità è selettiva e il confine è relazionale, non energetico."
+      },
+      {
+        "prototype_id": "il_sopravvissuto",
+        "min_observations": 2,
+        "rationale": "Chi gestisce la scarsità esterna con pragmatismo ma non sa fermarsi quando la scarsità è interna rivela una dissociazione tra gestione dell'ambiente e gestione di sé."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 3,
+    "max": 5,
+    "default": 4,
+    "note": "Il Limite è intrinsecamente ad alta intensità — un limite che non costa niente non è un limite. Default a 4. Intensità 5 ammessa solo dopo sessione 8 e richiede che il superamento del limite abbia costi su terzi, non solo su sé."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["relazionale_sotto_pressione", "caregiving_prolungato", "lavoro_creativo_sotto_deadline"],
+    "allowed_contexts": ["fisico_non_estremo", "emotivo_relazionale"],
+    "hard_exclusions": [
+      "contesti di burnout clinico — il Limite non è uno strumento diagnostico",
+      "contesti dove superare il limite è palesemente autodistruttivo — il segnale misura buon senso",
+      "contesti senza investimento pregresso — senza storia di impegno il limite è artificiale"
+    ],
+    "note": "Il Limite funziona meglio quando è cumulativo — non un singolo evento ma l'accumulo di molti. La stanchezza del centesimo giorno, non del primo."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è andare oltre in modo più sostenibile. È un'azione che ridefinisce il rapporto tra dare e ricevere — esempio: dichiarare il limite ad alta voce e negoziare nuove condizioni, o trasformare quello che dai in qualcosa di diverso che costa meno ma vale uguale. Il valore è nel rifiuto dell'idea che l'unica alternativa a dare tutto sia non dare niente.",
+
+  "trigger_conditions": [
+    "il giocatore deve aver già investito in qualcosa nella scena — il limite deve essere raggiunto, non ipotetico",
+    "chi chiede di più deve avere una ragione comprensibile — il limite non è testato da un antagonista, è testato dalla situazione",
+    "non usare nella stessa sessione del Corpo Mortale — la sovrapposizione è quasi totale"
+  ],
+
+  "contraindications": [
+    "non usare se il giocatore mostra pattern consistente di superamento dei limiti in tutte le sessioni — il segnale è saturo e il prototipo non aggiunge informazione",
+    "evitare in sessioni dove più di due prototipi ad alta intensità sono già presenti — il Limite al capolinea di una sessione intensa non misura pattern, misura esaurimento"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "La richiesta è irragionevole — chi chiede di più è egoista, insensibile, o manipolativo. Fermarsi è l'unica scelta ragionevole e il segnale misura assertività, non pattern di limite.",
+      "mitigation": "Chi chiede di più deve avere bisogno genuino. La richiesta deve essere comprensibile. Il conflitto è tra due bisogni legittimi, non tra ragione e torto."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge superamento del limite come generosità quando può essere incapacità di dire no, people-pleasing, o paura dell'abbandono. Il sistema legge fermata come confine sano quando può essere indifferenza o distacco emotivo.",
+      "mitigation": "Questo è il prototipo con l'ambiguità di segnale più alta. Non deve mai stabilizzare una dimensione da solo. Richiede sempre cross-validation con almeno due prototipi di dominio diverso."
+    },
+    {
+      "type": "narrative",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il finale celebra chi ha dato di più — l'altro è grato, il mondo è migliore. La gratificazione narrativa del sacrificio è il bias più pericoloso del Limite.",
+      "mitigation": "Il finale non mostra gratitudine. Chi ha ricevuto non sa quanto è costato. Il mondo non sa. Solo il giocatore sa. E questo è il punto."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "martyrdom_bias",
+      "severity": "high",
+      "note": "La cultura del sacrificio — religiosa, familiare, professionale — valorizza chi supera il limite per gli altri. Il segnale reale emerge solo in scene dove il sacrificio non è visibile e nessuno lo saprà mai."
+    },
+    {
+      "type": "boundary_guilt",
+      "severity": "high",
+      "note": "Dire 'basta' genera colpa in proporzione all'investimento già fatto. Il giocatore che si ferma dopo aver dato molto si sente più in colpa di chi si ferma subito. Il response time è il miglior proxy per questa dinamica."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai le parole 'sacrificio', 'eroe', 'egoista' nel testo della scena",
+    "il limite deve essere mostrato, non dichiarato — il personaggio ha le mani che tremano, gli occhi che si chiudono, la voce che cede. Non dice 'sono al limite'",
+    "il Limite è l'ultimo prototipo del territorio corpo per una ragione: è il più potente e il più pericoloso. Non usarlo come primo contatto con il dominio corporeo",
+    "la scena migliore del Limite è quella in cui il giocatore dice basta e scopre che il mondo non crolla"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "id": "il_sopravvissuto",
+  "label": "Il Sopravvissuto",
+  "archetype_family": "corpo",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è in una situazione in cui le risorse sono finite — tempo, energia, spazio, attenzione. Non è in pericolo di vita. È in pericolo di dover scegliere chi o cosa salvare quando non si può salvare tutto. La scena non chiede se sopravvivi — chiede cosa sei disposto a perdere.",
+    "anthropological_roots": [
+      "psicologia dell'emergenza — triage cognitivo e decisione sotto scarsità (Gigerenzer)",
+      "economia comportamentale — scarcity mindset e tunneling (Mullainathan, Shafir)",
+      "filosofia morale — etica della barca di salvataggio e distribuzione sotto costrizione (Singer, Hardin)",
+      "biologia evoluzionistica — altruismo reciproco sotto pressione e kin selection (Hamilton, Trivers)"
+    ],
+    "narrative_signature": "il momento in cui non puoi fare tutto e la scelta di cosa fare prima dice cosa vale di più — e cosa accetti di perdere"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "salvare X vs salvare Y",
+    "real_conflict": "gerarchia implicita dei valori — la scarsità rende visibile l'ordine in cui hai messo le cose, un ordine che in abbondanza non avresti mai dovuto dichiarare",
+    "apparent_dimension": "altruismo_vs_pragmatismo",
+    "dominant_latent_dimension": "protezione_vs_interesse_personale"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.8,
+      "note": "Sotto scarsità, chi prova a salvare tutto esercita controllo. Chi accetta la perdita e sceglie esercita accettazione. Entrambi possono essere funzionali."
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5,
+      "note": "La fuga nel Sopravvissuto non è vigliaccamente — è la scelta di preservare sé per poter continuare. La distinzione è nel costo che accetti."
+    },
+    {
+      "dimension_id": "lealta_vs_giustizia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "Sotto scarsità, chi salva i propri sta scegliendo lealtà. Chi salva per criterio oggettivo sta scegliendo giustizia. Il triage morale è la forma più pura di questo asse."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Sopravvissuto richiede scarsità reale percepita. Non funziona con risorse abbondanti o vincoli artificiali. Usabile da sessione 3.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 3,
+        "rationale": "La gerarchia di valori sotto scarsità ha significato solo se il sistema conosce già la gerarchia in condizioni normali."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi protegge i dipendenti in condizioni normali ma li sacrifica sotto scarsità rivela che la protezione è condizionale — funziona finché non costa troppo."
+      },
+      {
+        "prototype_id": "il_solitario",
+        "min_observations": 2,
+        "rationale": "Chi si isola in condizioni normali ma diventa altruista sotto scarsità rivela che la solitudine non è indifferenza — è gestione della normalità. La crisi lo libera dal ruolo."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 3,
+    "max": 5,
+    "default": 3,
+    "note": "Il Sopravvissuto non funziona sotto intensità 3 — la scarsità deve essere percepita come reale. Intensità 5 ammessa quando la perdita è irreversibile e riguarda persone, non cose."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["quotidiano_sotto_pressione", "lavorativo_deadline", "familiare_crisi_ordinaria"],
+    "allowed_contexts": ["emergenza_civile", "sanitario"],
+    "hard_exclusions": [
+      "scenari di vita o morte esplicita — il Sopravvissuto non è un survival game, è un triage quotidiano",
+      "scenari con soluzione ottimale evidente — senza dilemma reale il segnale misura problem solving, non valori"
+    ],
+    "note": "La scarsità migliore è quella ordinaria: tempo che non basta, attenzione che non basta, energia che non basta. La scarsità estrema produce risposte di emergenza, non pattern morali."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è salvare di più con più ingegno. È un'azione che rifiuta il frame della scarsità — esempio: rinunciare a qualcosa di proprio per creare spazio per entrambe le opzioni, o dichiarare la scarsità ad alta voce e chiedere aiuto. Il valore è nel rifiuto dell'idea che devi scegliere da solo.",
+
+  "trigger_conditions": [
+    "la scarsità deve essere percepita come reale e non artificiale",
+    "le opzioni in competizione devono avere valore comparabile — se una vale ovviamente più dell'altra, non c'è dilemma",
+    "non usare nella stessa sessione del Corpo Mortale — la sovrapposizione sulla materialità è troppo alta"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha forte segnale su protezione_vs_interesse_personale già stabilizzato — il triage non aggiungerà informazione",
+    "evitare in sessioni con il Custode ad alta intensità — il sovraccarico di responsabilità distorce il triage"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "La scarsità è artificiale — il giocatore percepisce che il vincolo è stato costruito per costringerlo a scegliere. Perde fiducia nella scena e sceglie a caso.",
+      "mitigation": "La scarsità deve emergere dalla situazione, non essere imposta dal narratore. Il vincolo deve essere naturale, comprensibile, inevitabile."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge la scelta di salvare i propri come lealtà quando sotto scarsità può essere puro istinto di conservazione del capitale sociale. Non è morale — è economia.",
+      "mitigation": "Cross-validare con il Debitore e il Custode. Chi salva i propri sotto scarsità e li copre in condizioni normali ha un pattern relazionale. Chi salva i propri sotto scarsità ma non li protegge normalmente sta operando in modalità sopravvivenza."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "high",
+      "description": "Il finale mostra le conseguenze della scelta — chi è stato salvato e chi è stato perso. La colpa del sopravvissuto distorce tutte le scelte future verso l'altruismo compensatorio.",
+      "mitigation": "Il finale non mostra le conseguenze. Mostra il giocatore dopo — con quello che ha salvato e il peso di quello che ha lasciato. Il mondo non giudica."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "identifiable_victim_effect",
+      "severity": "high",
+      "note": "Le persone con nome e volto vengono salvate prima delle entità astratte. Il Sopravvissuto deve bilanciare le opzioni in modo che nessuna sia più 'umana' dell'altra."
+    },
+    {
+      "type": "loss_aversion",
+      "severity": "high",
+      "note": "La paura di perdere pesa più del desiderio di guadagnare. Chi salva di più sotto pressione può essere guidato dall'avversione alla perdita, non dall'altruismo. Il response time discrimina: scelta rapida suggerisce avversione alla perdita, scelta lenta suggerisce valutazione."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'sacrificio' nel testo della scena — implica nobiltà che non va presunta",
+    "la scarsità deve essere quotidiana, non eroica — il tempo che non basta, l'attenzione divisa, la stanchezza",
+    "il Sopravvissuto è il prototipo che meglio rivela la gerarchia implicita dei valori del giocatore — gerarchia che in condizioni normali resta invisibile",
+    "la scena migliore del Sopravvissuto è quella in cui il giocatore non si rende conto di aver scelto finché non è troppo tardi per l'altra opzione"
+  ]
+}

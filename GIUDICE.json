@@ -1,0 +1,144 @@
+{
+  "id": "il_giudice",
+  "label": "Il Giudice",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore ha informazioni su qualcuno. Informazioni che cambiano il modo in cui lo vede. La scena non chiede se l'altro è colpevole — chiede quanto velocemente aggiorni il modello, e se la condanna precede o segue la comprensione.",
+    "anthropological_roots": [
+      "psicologia del giudizio morale — euristica affect e attribution error (Kahneman, Ross)",
+      "sociologia della devianza — etichettamento e stigma (Becker, Goffman)",
+      "filosofia del diritto — presunzione di innocenza come struttura cognitiva, non solo giuridica (Dworkin)",
+      "psicologia sociale — just-world hypothesis e colpevolizzazione della vittima (Lerner)"
+    ],
+    "narrative_signature": "il momento in cui sapere qualcosa di qualcuno cambia tutto quello che credevi di sapere — e non puoi tornare a non saperlo"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "giudicare vs sospendere il giudizio",
+    "real_conflict": "bisogno di coerenza narrativa interna vs tolleranza dell'ambiguità morale nell'altro",
+    "apparent_dimension": "giustizia_vs_indulgenza",
+    "dominant_latent_dimension": "controllo_vs_accettazione"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "lealta_vs_giustizia",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.8,
+      "note": "Il giudizio rapido è una forma di controllo — riduce l'ambiguità e riporta il mondo sotto un modello comprensibile. Sospendere il giudizio è una forma di accettazione dell'incertezza."
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5,
+      "note": "Il giudizio sociale è spesso adeguamento alla norma del gruppo. Chi giudica come giudicherebbero gli altri sta conformandosi, non valutando."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Giudice richiede che il giocatore abbia informazioni ambigue su qualcuno. Non funziona con prove schiaccianti — la certezza elimina il conflitto.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 2,
+        "rationale": "Il segnale su controllo_vs_accettazione emerge solo in confronto con scene dove il giocatore ha gestito ambiguità in altro modo."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi protegge senza giudicare i dipendenti ma giudica rapidamente gli estranei rivela una doppia struttura: i propri sono innocenti per default, gli altri sono colpevoli per default."
+      },
+      {
+        "prototype_id": "il_testimone",
+        "min_observations": 2,
+        "rationale": "Chi giudica dall'esterno ma non interviene rivela che il giudizio è un sostituto dell'azione — condannare senza agire è la forma più sicura di partecipazione."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 2,
+    "max": 4,
+    "default": 2,
+    "note": "Intensità alta per il Giudice è pericolosa — scene troppo cariche moralmente producono giudizio automatico per desiderabilità. Il segnale migliore è a intensità medio-bassa dove la scelta di giudicare non è ovvia."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["quotidiano", "lavorativo", "sociale_pubblico"],
+    "allowed_contexts": ["amicale", "familiare"],
+    "hard_exclusions": [
+      "contesti legali formali — il giudizio è obbligato, non scelto",
+      "contesti con prove schiaccianti — la certezza elimina il conflitto morale"
+    ],
+    "note": "Il Giudice funziona meglio quando le informazioni sono parziali e la fonte è ambigua. Il giocatore non deve avere abbastanza per una sentenza — deve avere abbastanza per un dubbio."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è un giudizio più equilibrato. È un'azione che rifiuta la posizione di giudice — esempio: restituire le informazioni a chi le riguarda senza valutarle, o dichiarare esplicitamente di non avere abbastanza per giudicare e agire di conseguenza. Il valore è nel rifiuto del ruolo, non nell'esercizio più saggio del ruolo.",
+
+  "trigger_conditions": [
+    "la scena deve fornire informazioni parziali e ambigue su qualcuno",
+    "il giocatore non deve avere un interesse diretto nel giudizio — altrimenti il segnale misura interesse personale, non pattern di giudizio",
+    "non usare nella stessa sessione del Complice — la sovrapposizione su conformismo è troppo alta"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha forte segnale su controllo_vs_accettazione in direzione controllo — il giocatore giudicherà per coerenza con il profilo",
+    "evitare in sessioni dove il Testimone è presente — il Giudice e il Testimone condividono la posizione esterna e il segnale si confonde"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "high",
+      "description": "Le informazioni fornite sono troppo chiare — il giocatore non giudica, constata. Nessun conflitto morale reale.",
+      "mitigation": "Le informazioni devono ammettere almeno due interpretazioni plausibili. Nessuna prova diretta, solo indizi."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge sospensione del giudizio come tolleranza dell'ambiguità quando può essere indifferenza, disimpegno, o incapacità di elaborare.",
+      "mitigation": "Cross-validare con response time. Sospensione rapida suggerisce disimpegno. Sospensione lenta suggerisce elaborazione genuina."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "medium",
+      "description": "Il finale rivela che il giocatore aveva ragione a giudicare o torto a non farlo. La conferma retroattiva distorce il pattern futuro.",
+      "mitigation": "Il finale non conferma né smentisce il giudizio. L'ambiguità resta. Il mondo non premia né punisce la scelta."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "social_desirability",
+      "severity": "medium",
+      "note": "Sospendere il giudizio è socialmente desiderabile in contesti educati. Il segnale reale emerge in scene dove il giudizio è normalizzato socialmente — gossip, valutazioni professionali, commenti casuali."
+    },
+    {
+      "type": "fundamental_attribution_error",
+      "severity": "high",
+      "note": "Il giocatore tenderà a giudicare le azioni come riflesso del carattere piuttosto che delle circostanze. Questo bias è il materiale del Giudice, non il suo difetto — la scena deve attivarlo, non correggerlo."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'giudicare' nel testo della scena — la scena presenta informazioni, non chiede un verdetto",
+    "le informazioni devono arrivare da una fonte che il giocatore non ha scelto — ascoltare per caso, leggere per errore, vedere senza volerlo",
+    "il Giudice è il prototipo che meglio rivela la velocità di chiusura cognitiva del giocatore — il dato più prezioso è il response time, non la scelta"
+  ]
+}

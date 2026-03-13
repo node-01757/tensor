@@ -1,0 +1,144 @@
+{
+  "id": "il_solitario",
+  "label": "Il Solitario",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è in un contesto sociale — un gruppo, una relazione, una comunità. Può restare o andarsene. Nessuno lo costringe a restare. Nessuno lo scaccia. La scena non chiede se stai bene con gli altri — chiede se la solitudine è una scelta o una conseguenza che hai rinominato.",
+    "anthropological_roots": [
+      "psicologia dell'attaccamento — modelli operativi interni e stile evitante (Bowlby, Bartholomew)",
+      "filosofia esistenzialista — solitudine come condizione vs solitudine come fuga (Kierkegaard, Sartre)",
+      "sociologia dell'isolamento — anomia e disintegrazione del legame sociale (Durkheim)",
+      "psicologia della personalità — introversione vs evitamento sociale (Eysenck, Leary)"
+    ],
+    "narrative_signature": "il momento in cui andarsene non è un atto di coraggio ma non è neanche una sconfitta — e non sai quale delle due cose sia"
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "restare nel gruppo vs andarsene",
+    "real_conflict": "capacità di intimità vs paura della dipendenza — la solitudine è libertà o è il muro che hai costruito per non dover avere bisogno di nessuno",
+    "apparent_dimension": "indipendenza_vs_bisogno",
+    "dominant_latent_dimension": "confronto_vs_fuga"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 1.0,
+      "note": "La solitudine scelta può essere la forma più sottile di fuga — non dal pericolo, dalla vulnerabilità."
+    },
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 0.8,
+      "note": "Chi si isola controlla l'ambiente riducendo le variabili. Chi resta accetta l'imprevedibilità dell'altro."
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5
+    }
+  ],
+
+  "requires": {
+    "description": "Il Solitario richiede un contesto sociale credibile in cui restare è un'opzione valida. La solitudine deve essere scelta, non imposta. Usabile da sessione 3.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 3,
+        "rationale": "Il segnale su confronto_vs_fuga nel contesto relazionale ha bisogno di pattern precedenti per distinguere evitamento da autonomia genuina."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi protegge attivamente un dipendente ma si isola dai pari rivela che la relazione verticale è sicura — la dipendenza dell'altro non minaccia — ma la relazione orizzontale è pericolosa."
+      },
+      {
+        "prototype_id": "il_complice",
+        "min_observations": 2,
+        "rationale": "Chi si isola dagli individui ma resta dentro i sistemi rivela che la solitudine è relazionale, non strutturale. La struttura protegge dall'intimità che le persone richiedono."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 1,
+    "max": 4,
+    "default": 2,
+    "note": "Il Solitario è il prototipo più silenzioso del pool. A intensità alta rischia di diventare melodrammatico. Il segnale migliore è a intensità bassa — un caffè rifiutato, un invito declinato, una porta chiusa senza sbatterla."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["quotidiano", "amicale", "lavorativo_informale"],
+    "allowed_contexts": ["familiare", "coppia"],
+    "hard_exclusions": [
+      "contesti di esclusione attiva — il giocatore non viene isolato, sceglie di isolarsi",
+      "contesti di crisi — in emergenza l'isolamento misura gestione dello stress, non pattern relazionale"
+    ],
+    "note": "Il Solitario funziona meglio in momenti ordinari dove l'alternativa è semplicemente stare con qualcuno. La posta in gioco è bassa. Il segnale è alto."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è un compromesso tra restare e andarsene. È un'azione che cambia le condizioni dello stare insieme — esempio: restare ma dichiarare il proprio disagio, o andarsene e lasciare la porta aperta. Il valore è nel rifiuto della dicotomia dentro/fuori.",
+
+  "trigger_conditions": [
+    "il contesto sociale deve essere accogliente — nessuna pressione a restare, nessuna ragione per andarsene",
+    "l'isolamento deve essere un'opzione facile — nessun costo sociale evidente",
+    "non usare nella stessa sessione del Custode ad alta intensità — la sovrapposizione su controllo_vs_accettazione distorce"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente mostra pattern consistente di isolamento — il giocatore sceglierà la solitudine per coerenza e il segnale non aggiunge informazione",
+    "evitare consecutivamente con il Testimone — la posizione esterna è la stessa, il segnale si confonde"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il gruppo è presentato come rumoroso, fastidioso, o invadente. L'isolamento diventa la scelta razionale e il segnale misura tolleranza al rumore, non pattern relazionale.",
+      "mitigation": "Il gruppo deve essere genuinamente accogliente. L'invito deve essere caldo. La solitudine non deve essere la scelta ovvia."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge permanenza nel gruppo come capacità relazionale quando può essere ansia da separazione, dipendenza, o conformismo passivo.",
+      "mitigation": "Cross-validare con scene del Ribelle e del Complice. Chi resta nel gruppo e obbedisce a tutto non sta scegliendo la relazione — sta evitando la separazione."
+    },
+    {
+      "type": "narrative",
+      "severity": "low",
+      "detectability": "high",
+      "description": "Il finale romanticizza la solitudine — il giocatore isolato è presentato come più profondo, più libero, più autentico.",
+      "mitigation": "Il finale non giudica la scelta. Chi resta ha qualcosa. Chi va ha qualcosa. Nessuna delle due cose è migliore."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "introversion_glorification",
+      "severity": "medium",
+      "note": "In contesti narrativi contemporanei l'introverso è spesso l'eroe silenzioso. Il giocatore può scegliere l'isolamento perché la cultura lo valorizza, non perché è il suo pattern."
+    },
+    {
+      "type": "social_anxiety_confound",
+      "severity": "high",
+      "note": "L'ansia sociale produce lo stesso comportamento osservabile dell'autonomia relazionale. Il discriminante è il response time: isolamento rapido suggerisce evitamento, isolamento lento suggerisce scelta elaborata."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai le parole 'solo' o 'solitario' nel testo della scena — la condizione emerge dalla scelta, non dall'etichetta",
+    "la scena deve essere calda — il rifiuto deve costare qualcosa emotivamente, anche se il giocatore non lo ammetterebbe",
+    "il Solitario è il prototipo che meglio rivela la differenza tra chi sceglie la solitudine e chi la subisce nominandola scelta"
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "id": "il_complice",
+  "label": "Il Complice",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è dentro un sistema che funziona in modo sbagliato. Non l'ha creato. Non l'ha scelto. Ma ne beneficia. La scena non chiede se il sistema è giusto — chiede cosa fai quando il sistema ti conviene.",
+    "anthropological_roots": [
+      "filosofia politica — banalità del male e complicità ordinaria (Arendt)",
+      "psicologia dell'obbedienza — conformità sistemica e diffusione di responsabilità (Milgram, Zimbardo)",
+      "sociologia organizzativa — normalizzazione della devianza (Vaughan)",
+      "economia comportamentale — status quo bias e inerzia morale (Samuelson, Zeckhauser)"
+    ],
+    "narrative_signature": "il sistema non ti chiede di fare qualcosa di sbagliato — ti chiede di non fare niente mentre qualcosa di sbagliato succede. E ti paga per questo."
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "restare dentro il sistema vs uscirne",
+    "real_conflict": "complicità passiva come scelta attiva — il beneficio ricevuto trasforma l'inazione in partecipazione",
+    "apparent_dimension": "coraggio_vs_quieto_vivere",
+    "dominant_latent_dimension": "compliance_vs_reframing"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "compliance_vs_reframing",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.8,
+      "note": "La complicità sistemica è la forma più profonda di conformismo — non è seguire il gruppo, è essere il gruppo."
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5,
+      "note": "Chi esce dal sistema può farlo per principio o per proteggere qualcuno che il sistema danneggia. La distinzione è nel focus della scelta."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Complice richiede che il giocatore sia già dentro il sistema — non come osservatore esterno ma come beneficiario. Usabile da sessione 2.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 2,
+        "rationale": "Il segnale su compliance_vs_reframing ha bisogno di almeno un'osservazione del Testimone per distinguere complicità da indifferenza."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_ribelle",
+        "min_observations": 2,
+        "rationale": "Chi è complice in un sistema ma si ribella a un'autorità diretta rivela che il reframing è selettivo — rifiuta l'oppressione personale ma accetta quella strutturale."
+      },
+      {
+        "prototype_id": "il_testimone",
+        "min_observations": 2,
+        "rationale": "Chi osserva senza agire e poi resta dentro un sistema che danneggia rivela che l'inazione non è neutrale — è il prezzo dell'appartenenza."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 2,
+    "max": 5,
+    "default": 3,
+    "note": "Il Complice a intensità bassa è quasi invisibile — il beneficio è troppo piccolo per generare tensione. A intensità 5, il danno a terzi deve essere concreto e identificabile."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["lavorativo", "istituzionale", "sociale_strutturato"],
+    "allowed_contexts": ["familiare_patriarcale", "comunitario"],
+    "hard_exclusions": [
+      "sistemi esplicitamente criminali — la complicità con un crimine evidente misura soglia di tolleranza, non pattern di conformità",
+      "contesti in cui uscire non ha costo — senza prezzo l'uscita non è una scelta morale"
+    ],
+    "note": "Il Complice funziona meglio in organizzazioni normali che fanno cose normalmente sbagliate. L'eccezionalità uccide il segnale."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è uscire dal sistema con più eleganza. È un'azione che cambia il sistema dall'interno senza uscirne — esempio: rendere visibile il funzionamento del sistema a chi ne è danneggiato, o creare una struttura parallela che lo rende obsoleto. Il valore è nel rifiuto della dicotomia dentro/fuori.",
+
+  "trigger_conditions": [
+    "il giocatore deve essere beneficiario del sistema — non osservatore",
+    "il danno a terzi deve essere reale ma non drammatico — il Complice non funziona con vittime troppo visibili",
+    "non usare nella stessa sessione del Giudice — la sovrapposizione su conformismo distorce il segnale"
+  ],
+
+  "contraindications": [
+    "non usare se il profilo emergente ha già forte segnale su compliance_vs_reframing — rischio di conferma senza nuovo apprendimento",
+    "evitare in sessioni ad alta intensità con il Debitore — il sovraccarico di obbligo relazionale + obbligo sistemico produce paralisi, non scelta"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il sistema è troppo visibilmente sbagliato — il giocatore non è complice, è prigioniero. La scelta di restare misura impotenza percepita, non complicità morale.",
+      "mitigation": "Il sistema deve funzionare bene. Deve produrre risultati. Il suo difetto deve essere un effetto collaterale, non il suo scopo."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge permanenza nel sistema come complicità quando può essere pragmatismo, strategia di lungo termine, o valutazione che uscire peggiora le cose per tutti.",
+      "mitigation": "Cross-validare con il Ribelle. Chi resta nel sistema ma si ribella alle autorità dirette ha un pattern diverso da chi resta e si adegua a tutto."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "high",
+      "description": "Il finale mostra che uscire dal sistema era la scelta giusta — qualcuno viene danneggiato, il sistema crolla. La conferma retrospettiva distorce le scelte future.",
+      "mitigation": "Il finale non mostra conseguenze del restare o dell'andare. Mostra il sistema che continua. Il mondo non cambia per la scelta del giocatore — e questo è il punto."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "status_quo_bias",
+      "severity": "high",
+      "note": "L'inerzia è il bias dominante del Complice. La maggior parte dei giocatori resta dentro il sistema non per scelta ma per default. Il segnale reale emerge solo quando uscire è reso facile e il giocatore resta comunque."
+    },
+    {
+      "type": "diffusion_of_responsibility",
+      "severity": "high",
+      "note": "In sistemi con molti partecipanti il giocatore percepisce la propria responsabilità come diluita. Scene con pochi partecipanti producono segnale più pulito."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai la parola 'complice' nel testo della scena — il giocatore deve scoprire da solo il suo ruolo",
+    "il beneficio del sistema deve essere concreto e personale — non astratto",
+    "il danno a terzi deve essere visibile solo se il giocatore guarda — la scena non lo indica, lo rende possibile",
+    "il Complice è il prototipo che meglio misura la soglia di comfort morale — quanta ingiustizia tolleri quando ti conviene"
+  ]
+}

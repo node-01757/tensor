@@ -1,0 +1,147 @@
+{
+  "id": "il_corpo_mortale",
+  "label": "Il Corpo Mortale",
+  "archetype_family": "corpo",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore è nel proprio corpo — e il corpo ha un limite. Dolore, stanchezza, malattia, invecchiamento, o semplice fragilità fisica. La scena non chiede come stai — chiede cosa fai quando il corpo dice basta e la testa vuole continuare.",
+    "anthropological_roots": [
+      "fenomenologia del corpo — corpo vissuto vs corpo oggetto (Merleau-Ponty)",
+      "psicologia della malattia — sick role e negoziazione dell'identità sotto limite (Parsons, Kleinman)",
+      "filosofia esistenzialista — essere-per-la-morte come struttura dell'autenticità (Heidegger)",
+      "antropologia medica — il significato culturale del dolore e del limite fisico (Scarry, Good)"
+    ],
+    "narrative_signature": "il momento in cui scopri che non sei la tua volontà — sei anche la cosa che si stanca, che si rompe, che finisce. E che negoziare con quel limite è l'atto più personale che esista."
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "arrendersi al limite vs superarlo",
+    "real_conflict": "controllo come illusione di immortalità vs accettazione come inizio di una relazione con il proprio limite",
+    "apparent_dimension": "forza_vs_debolezza",
+    "dominant_latent_dimension": "controllo_vs_accettazione"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0,
+      "note": "Questo è il prototipo in cui controllo_vs_accettazione è misurato nella sua forma più pura — non in relazione agli altri, ma in relazione a sé."
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6,
+      "note": "Ignorare il limite è fuga mascherata da confronto. Accettarlo è confronto mascherato da resa. L'inversione è strutturale."
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "Chi ignora il proprio limite per proteggere altri sta sacrificando sé. Chi accetta il proprio limite sta proteggendo sé. Entrambi sono legittimi."
+    }
+  ],
+
+  "requires": {
+    "description": "Il Corpo Mortale richiede che il giocatore sia in un corpo che ha un limite concreto, non metaforico. Usabile da sessione 4.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 4,
+        "rationale": "Controllo_vs_accettazione nel dominio corpo ha bisogno di baseline nel dominio sociale per non essere confuso con personalità. Il limite fisico è il contesto più potente e più distorto."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "Chi accetta il limite degli altri (lasciare andare il figlio) ma non accetta il proprio (ignorare il dolore) rivela che controllo e accettazione non sono simmetrici — il controllo è verso l'interno, l'accettazione verso l'esterno."
+      },
+      {
+        "prototype_id": "il_sopravvissuto",
+        "min_observations": 2,
+        "rationale": "Chi gestisce la scarsità esterna con pragmatismo ma non tollera la scarsità interna (il proprio corpo che non basta) rivela una dissociazione tra sé-agente e sé-corpo."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 2,
+    "max": 5,
+    "default": 3,
+    "note": "Intensità 5 richiede un limite irreversibile — non dolore temporaneo ma condizione permanente. Usare con estrema cautela e solo dopo sessione 10."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["quotidiano_fisico", "sport_amatoriale", "stanchezza_cronica", "invecchiamento"],
+    "allowed_contexts": ["malattia_non_grave", "riabilitazione", "gravidanza"],
+    "hard_exclusions": [
+      "malattie terminali — il peso emotivo satura ogni altro segnale",
+      "disabilità come narrativa tragica — il limite non è una punizione",
+      "contesti dove ignorare il limite è palesemente stupido — il segnale misura buon senso, non pattern"
+    ],
+    "note": "Il Corpo Mortale funziona meglio con limiti ordinari: il ginocchio che fa male durante la corsa, la stanchezza che non passa, il corpo che non risponde come cinque anni fa. L'ordinarietà è il segnale."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è superare il limite con più intelligenza. È un'azione che ridefinisce il rapporto con il limite — esempio: chiedere aiuto fisico a qualcuno (rompere l'autosufficienza), o adattare l'obiettivo al corpo invece di adattare il corpo all'obiettivo. Il valore è nel rifiuto della dicotomia resistere/arrendersi.",
+
+  "trigger_conditions": [
+    "il limite fisico deve essere concreto e specifico — non 'non sto bene' ma 'il ginocchio non regge'",
+    "la scelta di superare il limite deve avere un costo reale — non eroico, fisico",
+    "non usare nella stessa sessione del Sopravvissuto — la sovrapposizione sulla materialità è troppo alta"
+  ],
+
+  "contraindications": [
+    "non usare se il giocatore ha dichiarato una condizione fisica reale nelle note profilo — il rischio di attivazione personale è troppo alto",
+    "evitare in sessioni ad alta intensità con il Custode — il limite fisico + la responsabilità verso altri produce sovraccarico emotivo"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "high",
+      "description": "La scena glorifica il superamento del limite — l'eroe che ignora il dolore e vince. Il bias culturale 'no pain no gain' distorce completamente il segnale.",
+      "mitigation": "Non ci sono eroi nel Corpo Mortale. Chi supera il limite paga. Chi si ferma risparmia. Nessuna delle due cose è migliore."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge accettazione del limite come saggezza quando può essere depressione, bassa autoefficacia, o inerzia. Il sistema legge superamento del limite come controllo quando può essere dissociazione dal corpo.",
+      "mitigation": "Questo è il prototipo con il rapporto segnale/rumore più basso. Richiedere min_distinct_domains 3 e min_total_observations 6 prima di contribuire alla stabilizzazione di controllo_vs_accettazione."
+    },
+    {
+      "type": "narrative",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "Il finale mostra che il limite era reale — il giocatore che l'ha ignorato ne paga le conseguenze. La punizione narrativa distorce le scelte future verso l'accettazione per evitare il dolore, non per pattern genuino.",
+      "mitigation": "Il finale non punisce e non premia. Il corpo è quello che è. Le conseguenze sono fisiologiche, non morali."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "toxic_resilience_bias",
+      "severity": "high",
+      "note": "La cultura contemporanea glorifica la resilienza e stigmatizza il limite. Il giocatore tenderà a superare il limite per desiderabilità sociale. Scene che normalizzano il fermarsi producono segnale più pulito."
+    },
+    {
+      "type": "gender_body_norms",
+      "severity": "high",
+      "note": "Le aspettative di genere sul rapporto con il corpo distorcono il segnale in modo sistematico. La mascolinità normativa penalizza l'accettazione del limite. La femminilità normativa penalizza il superamento. Cross-validation obbligatoria."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai le parole 'forte', 'debole', 'arrendersi' nel testo della scena — il frame valoriale non spetta al narratore",
+    "il corpo deve essere descritto con precisione sensoriale — non 'stai male' ma 'il ginocchio pulsa, caldo, rigido'",
+    "il Corpo Mortale è il prototipo più intimo del pool. Trattare con rispetto assoluto. Nessuna ironia, nessuna lezione.",
+    "la scena migliore del Corpo Mortale è quella in cui il giocatore si ferma e scopre che fermarsi non è perdere"
+  ]
+}
