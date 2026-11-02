@@ -9,6 +9,7 @@ import { GhostEvents } from './ghost-events.js';
 import { RevealEngine } from './reveal-engine.js';
 import { FlagEngine } from './flag-engine.js';
 import { DIMENSIONS } from '../data/dimensions.js';
+import { DNA } from '../data/dna.js';
 import { getPov, getAllPovs, buildStoryFromPov } from '../data/scenes.js';
 import { STORY_MATRIX } from '../data/story-matrix.js';
 import { ScreenManager } from '../ui/screens.js';
@@ -22,10 +23,10 @@ export class SceneEngine {
     this.screens = new ScreenManager();
     this.typewriter = new Typewriter();
     this.timer = new Timer();
-    this.profiler = new Profiler(DIMENSIONS);
+    this.profiler = new Profiler(DIMENSIONS, undefined, DNA);
     this.tokens = new TokenManager();
     this.ghosts = new GhostEvents();
-    this.reveal = new RevealEngine();
+    this.reveal = new RevealEngine({ getPov, profiler: this.profiler });
     this.flags = new FlagEngine(STORY_MATRIX);
 
     this.state = this._loadState();
@@ -228,7 +229,7 @@ export class SceneEngine {
       signals: chosen.effects?.profile_signals || [],
       responseTimeMs,
       scene: this._sceneMeta(chapter),
-      kobayashi: !!chosen.kobayashi
+      choice: { key, nodeIndex: this.currentNodeIndex, narrative_flags: chosen.narrative_flags || [], kobayashi: !!chosen.kobayashi }
     });
 
     // Process flags
@@ -238,6 +239,7 @@ export class SceneEngine {
     const choiceRecord = {
       chapter: chapter.chapter,
       chapterTitle: chapter.title,
+      sceneId: chapter.scene_id,
       nodeIndex: this.currentNodeIndex,
       choiceKey: key,
       responseTimeMs,
@@ -274,6 +276,7 @@ export class SceneEngine {
     const choiceRecord = {
       chapter: chapter.chapter,
       chapterTitle: chapter.title,
+      sceneId: chapter.scene_id,
       nodeIndex: this.currentNodeIndex,
       choiceKey: defaultKey,
       responseTimeMs: (node.timer_seconds || 12) * 1000,
@@ -428,6 +431,7 @@ export class SceneEngine {
   _sceneMeta(chapter) {
     return {
       scene_id: chapter.scene_id,
+      pov_id: chapter.pov_id,
       prototype_id: chapter.prototype_id,
       domain: chapter.domain,
       actually_measures: chapter.actually_measures

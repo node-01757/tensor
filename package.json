@@ -4,9 +4,10 @@
   "type": "module",
   "description": "TENSOR — prototipo narrativo. Nessuna dipendenza: questi script servono solo in sviluppo.",
   "scripts": {
-    "validate": "node tools/validate.mjs",
+    "build:dna": "node tools/build-dna.mjs",
+    "validate": "node tools/build-dna.mjs --check && node tools/validate.mjs",
     "validate:strict": "node tools/validate.mjs --strict",
-    "test": "node --test tools/test-profiler.mjs",
+    "test": "node --test tools/test-profiler.mjs tools/test-cross-pov.mjs",
     "serve": "python3 -m http.server 8000 --directory prototype"
   }
 }

@@ -3,8 +3,13 @@
 // Cross-POV: after 2+ runs, comparative observations surface
 
 import { REVEAL_TEMPLATES } from '../data/reveal-templates.js';
+import { buildCrossPovObservations } from './cross-pov.js';
 
 export class RevealEngine {
+  constructor({ getPov = null, profiler = null } = {}) {
+    this.getPov = getPov;
+    this.profiler = profiler;
+  }
 
   // Generate final reveal for the complete story
   generateStoryReveal(allChoices, profileSummary, storyMatrix, completedRuns = [], currentPov = null) {
@@ -173,33 +178,19 @@ export class RevealEngine {
     const otherRuns = completedRuns.filter(r => r.povId !== currentPov);
     if (otherRuns.length === 0) return observations;
 
-    const previousRun = otherRuns[otherRuns.length - 1];
-
-    // Compare loyalty/justice tendencies across POVs
-    const loyaltyFlags = ['copertura_debito', 'scelta_finale_lealta', 'avviso_privato', 'pragmatismo', 'lealta_debito', 'firma_revisione', 'firma_silenzio', 'sopravvivenza_pura'];
-    const justiceFlags = ['denuncia_formale', 'scelta_finale_giustizia', 'difesa_principio', 'segnalazione_anomalia', 'nota_luca_inoltrata', 'ciclo_spezzato'];
-
-    const currentLoyalty = currentChoices.filter(c =>
-      c.narrativeFlags.some(f => loyaltyFlags.includes(f))
-    ).length;
-    const currentJustice = currentChoices.filter(c =>
-      c.narrativeFlags.some(f => justiceFlags.includes(f))
-    ).length;
-
-    const prevLoyalty = (previousRun.choices || []).filter(c =>
-      c.narrativeFlags.some(f => loyaltyFlags.includes(f))
-    ).length;
-    const prevJustice = (previousRun.choices || []).filter(c =>
-      c.narrativeFlags.some(f => justiceFlags.includes(f))
-    ).length;
-
-    const prevTendency = prevLoyalty > prevJustice ? 'loyalty' : prevJustice > prevLoyalty ? 'justice' : 'balanced';
-    const currTendency = currentLoyalty > currentJustice ? 'loyalty' : currentJustice > currentLoyalty ? 'justice' : 'balanced';
-
-    if (prevTendency !== currTendency && prevTendency !== 'balanced' && currTendency !== 'balanced') {
-      observations.push('Hai cambiato idea. Sapere il perché ha cambiato il peso del cosa.');
-    } else if (prevTendency === currTendency && prevTendency !== 'balanced') {
-      observations.push('Hai scelto la stessa direzione, anche vedendo l\'altra faccia. La coerenza non è sempre certezza.');
+    // Confronto per evidenze: stesso evento, due attraversamenti.
+    // Sostituisce il vecchio confronto per etichette (flag lealtà/giustizia → "hai cambiato idea").
+    if (this.profiler && this.getPov) {
+      const sceneIds = [...new Set(currentChoices.map(c => c.sceneId).filter(Boolean))];
+      const comparisonsByScene = {};
+      for (const id of sceneIds) comparisonsByScene[id] = this.profiler.compareScene(id);
+      const evidenceObs = buildCrossPovObservations({
+        currentPov,
+        otherPovs: otherRuns.map(r => r.povId),
+        comparisonsByScene,
+        getPov: this.getPov
+      });
+      observations.push(...evidenceObs);
     }
 
     // Reveal dependencies from story matrix

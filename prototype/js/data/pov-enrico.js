@@ -37,7 +37,9 @@ export const POV_ENRICO = {
               effects: {
                 profile_signals: [
                   { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 2 },
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 2 }
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 2 },
+                  // la norma del genitore che sta vicino, con un altro genitore che guarda (DNA Custode: variante sociale)
+                  { dimension_id: 'conformismo_vs_autonomia', direction: 'conformismo', magnitude: 1 }
                 ]
               }
             },
@@ -157,7 +159,8 @@ export const POV_ENRICO = {
               effects: {
                 profile_signals: [
                   { dimension_id: 'conformismo_vs_autonomia', direction: 'autonomia', magnitude: 2 },
-                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 1 }
+                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 1 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 1 }
                 ]
               }
             },
@@ -306,7 +309,8 @@ export const POV_ENRICO = {
               effects: {
                 profile_signals: [
                   { dimension_id: 'compliance_vs_reframing', direction: 'reframing', magnitude: 2 },
-                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 }
+                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 1 }
                 ]
               }
             }
@@ -350,7 +354,9 @@ export const POV_ENRICO = {
               effects: {
                 profile_signals: [
                   { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 2 },
-                  { dimension_id: 'conformismo_vs_autonomia', direction: 'conformismo', magnitude: 1 }
+                  { dimension_id: 'conformismo_vs_autonomia', direction: 'conformismo', magnitude: 1 },
+                  // coprire chi ti ha coperto: lealtà o protezione del capitale relazionale (DNA Debitore)
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 1 }
                 ]
               }
             }

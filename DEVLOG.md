@@ -1,6 +1,6 @@
 # TENSOR — Development Log
 
-## Stato attuale: v0.3 — Profiler v1 + binding scene↔DNA
+## Stato attuale: v0.4 — Eleggibilità DNA, evidenze con provenienza, confronto cross-POV
 
 **Ultimo aggiornamento:** 2026-11-02
 
@@ -38,10 +38,12 @@ TENSOR/
     │   │   ├── reveal-templates.js
     │   │   ├── pov-enrico.js  # POV Enrico (4 scene)
     │   │   ├── pov-marco.js   # POV Marco (4 scene)
-    │   │   └── pov-sara.js    # POV Sara (4 scene, arco oscuro)
+    │   │   ├── pov-sara.js    # POV Sara (4 scene, arco oscuro)
+    │   │   └── dna.js         # GENERATO da tools/build-dna.mjs (npm run build:dna)
     │   ├── engine/
     │   │   ├── scene-engine.js    # Core: flusso multi-POV, cross-run flags
-    │   │   ├── profiler.js        # Profiler v1: run + profilo cumulativo persistente
+    │   │   ├── profiler.js        # Profiler v1.1: evidenze con provenienza, eleggibilità DNA
+    │   │   ├── cross-pov.js       # Confronto per evidenze sullo stesso evento, testo osservativo
     │   │   ├── reveal-engine.js   # Reveal cross-POV + Sara-specific
     │   │   ├── flag-engine.js     # Gestione flag narrative
     │   │   ├── ghost-events.js    # Eventi fantasma
@@ -53,14 +55,17 @@ TENSOR/
 │
 ├── tools/
 │   ├── validate.mjs           # Validatore scene ↔ DNA ↔ dimensioni
-│   └── test-profiler.mjs      # Test unitari profiler (node:test)
+│   ├── build-dna.mjs          # JSON root → prototype/js/data/dna.js
+│   ├── test-profiler.mjs      # Test unitari profiler (node:test)
+│   └── test-cross-pov.mjs     # Test eleggibilità, ambiguità, confronto cross-POV
 └── package.json               # Solo script di sviluppo, zero dipendenze
 ```
 
 ### Comandi di sviluppo
 
 ```bash
-npm run validate          # errori → exit 1; warning editoriali stampati
+npm run build:dna         # rigenera dna.js dopo aver toccato un *.json
+npm run validate          # check dna.js in sync + errori → exit 1; warning editoriali stampati
 npm run validate:strict   # anche i warning fanno fallire
 npm test                  # test profiler
 npm run serve             # http://localhost:8000
@@ -143,6 +148,41 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
 
 ## Cosa è stato fatto
 
+### v0.4 — Il profiler non giudica: evidenze, eleggibilità, confronto cross-POV
+Principio guida: la stessa condotta può nascere da pressioni diverse; condotte diverse possono
+esprimere la stessa strategia. Il reveal confronta evidenze, non etichette di prototipo.
+- **DNA nel runtime**: `tools/build-dna.mjs` genera `data/dna.js` (solo i campi usati: dimensioni,
+  requires, moral_structure). Il validatore fallisce se è fuori sync.
+- **`requires.for_profiling` applicato**: un'osservazione da un prototipo con condizioni non
+  soddisfatte è *grezza*: conservata con tutta la provenienza, esclusa dal profilo stabile.
+  Valutazione in lettura → **retroattiva**: quando le sessioni bastano, le evidenze grezze contano.
+  Unica condizione supportata: `min_sessions_completed`. Altre condizioni vengono esposte in
+  `prototypeEligibility().unmet` ma non bloccano.
+- **Il cumulativo conserva evidenze, non totali** (schema storage v2; i totali v1 non sono
+  migrabili senza inventare provenienze → si conserva solo `sessionsCompleted`). Ogni evidenza
+  porta: POV, scena, prototipo, dominio, modo, scelta, flag narrativi, kobayashi, RT.
+- **Ambiguità preservata**: `getEvidence()` / `getEvidenceByPrototype()` — "fuga" dalla Maschera e
+  "fuga" dal Testimone non si sommano in un'etichetta.
+- **`compareScene(sceneId)`**: per ogni dimensione con evidenze da ≥2 POV sullo stesso evento →
+  `divergent` (direzioni opposte) o `convergent` (stessa direzione da gesti diversi). È sulla storia,
+  non sul profilo: la Maschera grezza per il profilo stabile entra comunque nel confronto.
+- **`cross-pov.js`**: trasforma il confronto in testo. Nomina il giorno, i due POV, le due scelte
+  come lette dal giocatore, e ciò che ciascun POV sapeva (dal campo `knows`, con euristica lessicale
+  per scartare lo stesso fatto scritto in due modi). Chiude con "Il gioco tiene tutte e due le mosse.
+  Non le mette una contro l'altra." Un test verifica l'assenza di parole-giudizio
+  (`FORBIDDEN_IN_REVEAL`). Sostituisce il vecchio "Hai cambiato idea" basato su flag lealtà/giustizia.
+- **4 warning residui chiusi** con segnali dove la dimensione è davvero in gioco (commentati nel codice).
+  Validatore: 0 errori, 0 warning. Test: 25.
+
+#### Limiti noti v0.4
+- I `knows` sono scritti in seconda persona ("il presidente ti guarda dal vetro"): nel reveal vanno
+  tra virgolette come voce interna. Per Enrico, che è il POV che sa meno, l'asimmetria estratta è
+  spesso banale ("Martina si arrampica"). Soluzione pulita: un campo `private_knowledge` per scena.
+- Il momento meta e il gating per fase di confidenza (`silent` < 5 sessioni) non sono applicati al
+  reveal di fine storia, che resta sempre attivo: con 3 POV il prototipo non arriva mai a 5 sessioni.
+- Nodo a 4 opzioni (Marco, venerdì): da misurare, non da rimuovere a sensazione. Serve logging di
+  timeout per nodo, distribuzione delle scelte e un check di comprensione delle alternative.
+
 ### v0.3 — Profiler v1 e binding scene↔DNA
 - **Bug critico risolto**: `selectPov()` chiamava `profiler.reset()` → il profilo veniva cancellato a ogni run. Ora c'è un profilo di *run* (azzerato a ogni POV, alimenta il reveal) e un profilo *cumulativo* persistente (`localStorage: tensor_profile_v1`)
 - **Profiler v1** (`profiler.js`):
@@ -212,7 +252,7 @@ Principio: non adattare il personaggio allo strumento. I prototipi restano, i se
    - Ogni scelta deve sapere quale dimensione misura, con quale peso, in quale modo
    - Annotare le scene esistenti (Enrico, Marco, Sara) con metadata DNA
 
-3. ◐ **Profilo persistente (tensor del giocatore)** — persistenza e stabilità fatte; selezione adattiva e contraddizioni DNA-based da fare
+3. ◐ **Profilo persistente (tensor del giocatore)** — persistenza, stabilità, eleggibilità e confronto cross-POV per evidenze fatti; selezione adattiva e `for_contradiction_reveal` da fare
    - Struttura dati per il profilo morale cumulativo
    - Cross-story persistence (il profilo sopravvive tra storie settimanali)
    - Selezione adattiva dei prototipi basata sul profilo

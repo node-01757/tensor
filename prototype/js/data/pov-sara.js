@@ -116,7 +116,9 @@ export const POV_SARA = {
               effects: {
                 profile_signals: [
                   { dimension_id: 'conformismo_vs_autonomia', direction: 'conformismo', magnitude: 1 },
-                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 2 }
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 2 },
+                  // non consegnare chi usa la tua stessa tecnica: lealtà di condizione, non di affetto
+                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 }
                 ]
               }
             },

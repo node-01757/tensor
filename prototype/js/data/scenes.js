@@ -55,6 +55,9 @@ export function buildStoryFromPov(pov) {
                 scene.scene_id === 'audit_venerdi' ? 'I numeri' :
                 scene.scene_id === 'fermata_domenica' ? 'La fermata' : '',
       scene_id: scene.scene_id,
+      pov_id: pov.pov_id,
+      knows: scene.knows || [],
+      doesnt_know: scene.doesnt_know || [],
       prototype_id: scene.prototype_activated,
       domain: scene.domain,
       actually_measures: scene.actually_measures || [],
