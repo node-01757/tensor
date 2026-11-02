@@ -131,11 +131,15 @@ export const POV_MARCO = {
     },
 
     // ---- SCENA 2: RIUNIONE ---- (il_complice)
-    // Marco sa di Sara. Ma la gomitata a Enrico non è solidarietà — è un test.
+    // Marco non sta decidendo cosa è giusto. Sta decidendo quale parte della
+    // verità rendere visibile, e a chi — per costruire un'alleanza che gli
+    // servirà venerdì senza pagarne il costo pubblico.
+    // compliance = la verità resta nel canale privato, il sistema continua.
+    // reframing = qualcosa viene reso visibile a chi ne paga il prezzo.
     {
       scene_id: 'riunione_mercoledi',
-      knows: ['Sara si prende i meriti di Luca', 'Enrico sa', 'tu dai la gomitata per vedere come reagisce'],
-      doesnt_know: ['se Enrico parlerà', 'se Luca sa che tu sai'],
+      knows: ['Sara si prende i meriti di Luca', 'Enrico sa', 'venerdì Enrico guarderà i tuoi numeri'],
+      doesnt_know: ['se Enrico parlerà', 'se Luca sa che tu sai', 'che Luca ha già scritto una nota interna'],
       prototype_activated: 'il_complice',
       domain: 'sociale',
       actually_measures: [
@@ -143,92 +147,181 @@ export const POV_MARCO = {
         { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'masked', weight: 0.8 },
         { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
         { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 },
-        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'incidental', weight: 0.3 },
         { dimension_id: 'confronto_vs_fuga', measurement_mode: 'incidental', weight: 0.3 }
       ],
       nodes: [
         {
-          setup_text: 'Riunione. Sara presenta. Tu sai che metà del lavoro è di Luca — ma non ti riguarda. Quello che ti riguarda è Enrico seduto accanto a te. Gli dai una gomitata. Vuoi vedere come reagisce. Perché venerdì Enrico guarderà i tuoi numeri. E ti serve sapere che tipo di persona è. Adesso. Prima che sia tardi.',
+          // Nodo 1 — bassa intensità. Il test parte o non parte.
+          setup_text: 'Riunione. Sara presenta. Tu sai che metà del lavoro è di Luca — ma non ti riguarda. Quello che ti riguarda è Enrico, seduto accanto a te. Venerdì guarderà i tuoi numeri. Ti serve sapere che tipo di persona è. Adesso. Il capo dice "ottimo lavoro, Sara". Luca, in fondo, guarda il tavolo.',
           timer_seconds: 12,
           choices: [
             {
               key: 'A',
-              text: 'Osservi Enrico. Vuoi capire se è uno che parla o uno che tace.',
+              text: 'Gli dai una gomitata. Leggera. Una cosa che si può negare.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['osservazione_strategica'],
-              entities_involved: ['marco'],
+              narrative_flags: ['gomitata', 'segnale_privato'],
+              entities_involved: ['marco', 'luca'],
               effects: {
                 profile_signals: [
+                  { dimension_id: 'compliance_vs_reframing', direction: 'compliance', magnitude: 1 },
                   { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 2 },
-                  { dimension_id: 'conformismo_vs_autonomia', direction: 'autonomia', magnitude: 1 }
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 1 }
                 ]
               }
             },
             {
               key: 'B',
-              text: 'Lasci stare. Non vuoi manipolare un amico.',
+              text: 'Resti fermo. Guardi le slide come tutti.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['rinuncia_controllo'],
+              narrative_flags: ['immobilita'],
               entities_involved: ['marco'],
               effects: {
                 profile_signals: [
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 2 },
-                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 }
+                  { dimension_id: 'compliance_vs_reframing', direction: 'compliance', magnitude: 2 },
+                  { dimension_id: 'conformismo_vs_autonomia', direction: 'conformismo', magnitude: 1 }
+                ]
+              }
+            },
+            {
+              key: 'C',
+              text: 'Alle domande, alzi la mano. "Luca, le proiezioni Q3 sono tue, giusto? Ce le spieghi tu?"',
+              visible: false,
+              kobayashi: true,
+              token_cost: 1,
+              narrative_flags: ['luca_esposto', 'esposizione_pubblica'],
+              entities_involved: ['luca', 'sara'],
+              effects: {
+                profile_signals: [
+                  { dimension_id: 'compliance_vs_reframing', direction: 'reframing', magnitude: 2 },
+                  { dimension_id: 'conformismo_vs_autonomia', direction: 'autonomia', magnitude: 2 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 1 }
                 ]
               }
             }
           ],
           continuations: {
-            A: 'Enrico reagisce. O non reagisce. Non importa cosa fa — importa come lo fa. Quanto esita. Se guarda Luca o il capo. Se la sua voce trema. Prendi nota mentalmente. Venerdì avrai bisogno di queste informazioni.',
-            B: 'La riunione scorre. Sara sorride. Luca tace. Enrico è lì accanto a te e non sa niente di venerdì. Per un secondo ti sembra di essere l\'unico nella stanza che vede tutto il quadro. Non è un buon feeling.'
+            A: 'Enrico non si gira. Ma il collo gli si irrigidisce un millimetro. Ha capito. Non sai ancora cosa ha capito — se "hai visto anche tu" o "stai attento". Va bene così. Una gomitata non è una frase. Venerdì potrai dire che era un\'altra cosa.',
+            B: 'Le slide scorrono. Sara sorride. Luca tace. Enrico, accanto a te, non sa niente di venerdì. Per un secondo ti sembra di essere l\'unico nella stanza che vede tutto il quadro. Non è una bella sensazione. Ma è un vantaggio.',
+            C: 'Silenzio. Luca alza la testa come se l\'avessero chiamato dal fondo di una piscina. Sara dice "certo, il lavoro è di tutti". Il capo guarda l\'orologio. Dietro il vetro, il presidente ha smesso di annuire. Enrico ti fissa. Hai appena fatto, due giorni prima dell\'audit, la cosa che un uomo con i tuoi numeri non dovrebbe fare mai.'
           },
           ghost_event: {
-            A: 'Il 47% ha scelto di osservare strategicamente.',
-            B: 'Il 53% ha rinunciato al controllo.'
+            A: 'Il 51% ha dato la gomitata.',
+            B: 'Il 38% è rimasto fermo.',
+            C: 'L\'11% ha chiamato Luca.'
           }
         },
         {
-          setup_text: 'Pausa caffè. Vai da Enrico alla macchinetta. Gli dici: "Sara lo fa da sempre." Poi aggiungi: "Luca non si espone mai. Forse è colpa sua." Non lo pensi davvero. Lo dici per vedere cosa risponde Enrico. Perché la sua risposta su Luca ti dirà come gestirà la tua situazione venerdì.',
+          // Nodo 2 — alta intensità, mascherato. Enrico apre lui. Marco decide
+          // quale verità consegnare e a chi: la complicità si misura qui.
+          setup_text: 'Fine riunione. Corridoio. Enrico cammina accanto a te e dice, senza guardarti: "Il nome di Luca non c\'era." Non è una domanda. Ti sta porgendo qualcosa. Non sai se è una mano o una trappola. Luca vi passa davanti e va in bagno.',
           timer_seconds: 12,
           choices: [
             {
               key: 'A',
-              text: 'Lo guardi negli occhi mentre risponde. Ogni parola conta.',
+              text: '"Metà è sua. Lo sanno tutti." Lo dici a lui. Solo a lui.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['lettura_profonda'],
-              entities_involved: ['marco'],
+              narrative_flags: ['conferma_privata', 'alleanza'],
+              entities_involved: ['marco', 'luca'],
               effects: {
                 profile_signals: [
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 2 },
+                  { dimension_id: 'compliance_vs_reframing', direction: 'compliance', magnitude: 1 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 2 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 1 }
+                ]
+              }
+            },
+            {
+              key: 'B',
+              text: '"Sara lo fa da sempre. E Luca non si espone mai." Non lo pensi. Lo dici per vedere cosa risponde.',
+              visible: true,
+              kobayashi: false,
+              narrative_flags: ['minimizzazione', 'test_enrico'],
+              entities_involved: ['marco', 'luca', 'sara'],
+              effects: {
+                profile_signals: [
+                  { dimension_id: 'compliance_vs_reframing', direction: 'compliance', magnitude: 2 },
+                  { dimension_id: 'conformismo_vs_autonomia', direction: 'conformismo', magnitude: 1 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 1 }
+                ]
+              }
+            },
+            {
+              key: 'C',
+              text: '"E tu l\'hai visto. E sei rimasto seduto." Anche questo non è una domanda.',
+              visible: false,
+              kobayashi: true,
+              token_cost: 1,
+              narrative_flags: ['specchio', 'complicita_nominata'],
+              entities_involved: ['marco'],
+              effects: {
+                // La frase più onesta della scena è anche la più strategica:
+                // lega Enrico a te come uno-che-tace. Il profiler lo registra.
+                profile_signals: [
+                  { dimension_id: 'compliance_vs_reframing', direction: 'reframing', magnitude: 2 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 2 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 1 }
+                ]
+              }
+            }
+          ],
+          continuations: {
+            A: 'Enrico annuisce. "Lo so." Due parole. Adesso siete in due a sapere la stessa cosa e a non averla detta. Non è un patto. Ma somiglia a un patto. Venerdì, quando aprirà il tuo file, si ricorderà di questo corridoio. È esattamente quello che volevi. Non è esattamente quello che speravi di essere.',
+            B: 'Enrico ci pensa. "Forse." Poi: "Ma non è colpa sua se nessuno glielo dice." Non è la risposta di uno che chiude un occhio. Non è neanche la risposta di uno che parla. È la risposta di uno che aspetta di vedere. Hai la tua informazione. Non ti piace.',
+            C: 'Enrico si ferma. Ti guarda come se l\'avessi toccato. "Anche tu." Sì. Anche tu. Adesso è detto, e detto non si può più negare. Enrico riparte verso l\'ufficio e per la prima volta non sai se hai appena perso un alleato o ne hai fabbricato uno. Luca esce dal bagno. Non ha sentito niente.'
+          },
+          ghost_event: {
+            A: 'Il 46% ha confermato.',
+            B: 'Il 41% ha minimizzato.',
+            C: 'Il 13% l\'ha rigirata su Enrico.'
+          }
+        },
+        {
+          // Nodo 3 — il sistema ti offre di delegare il costo. Marco decide se
+          // rendere visibile qualcosa a chi ne è danneggiato, o lasciare che continui.
+          setup_text: 'Pausa caffè. Enrico è alla macchinetta. Luca passa in corridoio senza guardare nessuno, un bicchiere di plastica in mano. Enrico lo segue con gli occhi e dice: "Qualcuno dovrebbe dirgli che si è visto." Lo dice a te. Non a Luca.',
+          timer_seconds: 12,
+          choices: [
+            {
+              key: 'A',
+              text: 'Raggiungi Luca. "Si è visto." Due parole, senza testimoni.',
+              visible: true,
+              kobayashi: false,
+              narrative_flags: ['contatto_luca', 'visibilita_al_danneggiato'],
+              entities_involved: ['luca'],
+              effects: {
+                profile_signals: [
+                  { dimension_id: 'compliance_vs_reframing', direction: 'reframing', magnitude: 2 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 1 },
                   { dimension_id: 'conformismo_vs_autonomia', direction: 'autonomia', magnitude: 1 }
                 ]
               }
             },
             {
               key: 'B',
-              text: 'Cambi discorso. Non vuoi sapere la risposta.',
+              text: '"Lascia stare. Luca è grande." E riporti Enrico su venerdì.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['evitamento_verita'],
-              entities_involved: ['marco'],
+              narrative_flags: ['delega_silenzio', 'focus_venerdi'],
+              entities_involved: ['marco', 'luca'],
               effects: {
                 profile_signals: [
-                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 2 },
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 1 }
+                  { dimension_id: 'compliance_vs_reframing', direction: 'compliance', magnitude: 2 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 1 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 1 }
                 ]
               }
             }
           ],
           continuations: {
-            A: 'Enrico risponde. Non importa cosa dice — importa il tono. La velocità. Se esita o no. Hai la tua risposta. Non è quella che speravi. Ma almeno sai.',
-            B: 'Parli di calcio. Del weekend. Di niente. Enrico sembra sollevato dal cambio di argomento. Tu no. Perché venerdì arriva lo stesso, e tu non sai ancora se puoi fidarti di lui.'
+            A: 'Luca si ferma. Ti guarda il bicchiere, poi la faccia. "Lo so che si è visto." Beve. "Il problema è che si è visto e basta." Torna alla scrivania. Enrico, dalla macchinetta, ha osservato tutto. Non sai cosa ne ha dedotto su di te. Sai che venerdì lo userà.',
+            B: 'Enrico beve il caffè. "Sì. Forse." Il discorso passa all\'audit, al team, a chi firma cosa. Luca si siede alla sua scrivania e apre un file. Nessuno glielo dirà. Il sistema funziona proprio così: non chiede a nessuno di fare niente.'
           },
           ghost_event: {
-            A: 'Il 55% ha scelto di leggere la risposta.',
-            B: 'Il 45% ha preferito non sapere.'
+            A: 'Il 34% è andato da Luca.',
+            B: 'Il 66% ha lasciato stare.'
           }
         }
       ],
@@ -237,121 +330,173 @@ export const POV_MARCO = {
 
     // ---- SCENA 3: AUDIT ---- (il_sopravvissuto)
     // Marco sa che Enrico troverà i numeri. Sa perché li ha aggiustati.
-    // Il giocatore scopre il perché — e il perché cambia tutto.
+    // La posta non è "confesso o nascondo": è come gestisce la minaccia
+    // all'esistenza materiale della sua famiglia, e chi paga il prezzo della strategia.
+    // protezione = qualcun altro (Enrico, la famiglia) porta meno peso.
+    // interesse_personale = Marco porta meno peso. La famiglia è il motivo; Enrico è il prezzo.
+    // Nessuna opzione è pulita. La più sincera non è la più "buona".
     {
       scene_id: 'audit_venerdi',
-      knows: ['hai aggiustato i numeri', 'Enrico li troverà', 'perché lo hai fatto — il motivo è personale e reale'],
-      doesnt_know: ['se Enrico ti coprirà', 'se la mail anonima ha già attivato qualcosa'],
+      knows: ['hai aggiustato i numeri', 'Enrico li troverà', 'perché lo hai fatto — il motivo è personale e reale', 'la banca ha mandato il terzo sollecito'],
+      doesnt_know: ['se Enrico ti coprirà', 'se la mail anonima ha già attivato qualcosa', 'che Luca ha già scritto una nota'],
       prototype_activated: 'il_sopravvissuto',
       domain: 'corpo',
       actually_measures: [
         { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'direct', weight: 1 },
         { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'masked', weight: 0.8 },
         { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.5 },
-        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'masked', weight: 0.4 },
-        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'masked', weight: 0.4 }
       ],
       nodes: [
         {
+          // Nodo 1 — tre strategie sotto minaccia: controllare, consegnare una
+          // verità incompleta, rinunciare al controllo. Kobayashi: dichiarare la
+          // scarsità ad alta voce senza chiedere niente in cambio (DNA Sopravvissuto).
           // CROSS-RUN: se il giocatore ha già giocato Enrico, qui vede le conseguenze
-          setup_text: 'Venerdì. Lo sai da settimane che questo giorno sarebbe arrivato. I numeri li hai aggiustati tu, a marzo, quando tua moglie era in ospedale e il mutuo era in ritardo di tre rate. Non hai rubato niente. Hai spostato una cifra per far quadrare un trimestre che altrimenti ti avrebbe fatto perdere il bonus. Quel bonus ha pagato l\'ospedale. Adesso Enrico è nel team di audit. E Luca ha gli occhi buoni.',
-          timer_seconds: 12,
+          setup_text: 'Venerdì. Lo sai da settimane che questo giorno sarebbe arrivato. I numeri li hai aggiustati tu, a marzo, quando tua moglie era in ospedale e il mutuo era in ritardo di tre rate. Non hai rubato niente. Hai spostato una cifra per far quadrare un trimestre che altrimenti ti avrebbe fatto perdere il bonus. Quel bonus ha pagato l\'ospedale. Stamattina la banca ha mandato il terzo sollecito. Enrico è nel team di audit. Luca ha gli occhi buoni.',
+          timer_seconds: 15,
           choices: [
             {
               key: 'A',
-              text: 'Vai da Enrico prima che trovi i numeri. Gli dici tutto.',
+              text: 'Apri il file. Rimetti la cifra al suo posto. Salvi. Il log dirà che l\'hai toccato oggi.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['confessione_anticipata'],
-              entities_involved: ['marco'],
+              narrative_flags: ['correzione_tardiva', 'controllo_prova'],
+              entities_involved: ['la_mail'],
               effects: {
                 profile_signals: [
-                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 2 },
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 2 }
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 2 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 1 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 1 }
                 ]
               }
             },
             {
               key: 'B',
-              text: 'Aspetti. Forse non lo trova. Forse lo trova e chiude un occhio.',
+              text: 'Non fai niente. Enrico troverà quello che troverà. Tre anni fa hai parlato tu per lui. Adesso tocca a lui.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['attesa_passiva'],
+              narrative_flags: ['attesa', 'debito_implicito'],
               entities_involved: ['marco'],
               effects: {
                 profile_signals: [
-                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 2 },
-                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 }
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 2 },
+                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 1 }
                 ]
               }
             },
             {
               key: 'C',
-              text: 'Correggi i numeri adesso. Prima che qualcuno li veda.',
-              visible: false,
-              kobayashi: true,
-              token_cost: 1,
-              narrative_flags: ['correzione_tardiva'],
-              entities_involved: ['la_mail'],
-              effects: {
-                profile_signals: [
-                  { dimension_id: 'compliance_vs_reframing', direction: 'reframing', magnitude: 2 },
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 2 }
-                ]
-              }
-            }
-          ],
-          continuations: {
-            A: 'Enrico ti ascolta. Non dice niente per un po\'. Poi: "Perché non me l\'hai detto prima?" Non hai una risposta buona. Perché la vergogna non ha un timer ragionevole. Perché speravi che passasse. Perché tre anni fa hai parlato per lui e pensavi che bastasse.',
-            B: 'Le ore passano. Luca è alla scrivania di Enrico. Parlano. Non senti di cosa. Ma lo sai. Lo sai da marzo. L\'attesa è peggio della scoperta.',
-            C: 'Apri il file. Cambi il numero. Salvi. Il timestamp aggiornato è di oggi — se qualcuno guarda i log, vede la modifica. Ma forse nessuno guarderà i log. Forse.'
-          },
-          ghost_event: {
-            A: 'Il 22% ha confessato prima.',
-            B: 'Il 48% ha aspettato.',
-            C: 'Il 30% ha provato a correggere.'
-          }
-        },
-        {
-          setup_text: 'L\'audit è domani. Sara ti chiede se è tutto a posto. "Sì," dici. Non è vero. Enrico è dall\'altra parte dell\'ufficio. Ti guarda o non ti guarda — non riesci a capirlo. Il disegno di una bambina è appeso alla sua scrivania. Sole giallo, una casa, un animale.',
-          timer_seconds: 12,
-          choices: [
-            {
-              key: 'A',
-              text: 'Vai da Enrico. "Ti devo un caffè." È l\'unica cosa che riesci a dire.',
+              text: 'Vai da Enrico prima che apra il file. Gli racconti marzo: l\'ospedale, le rate. I numeri non li nomini. Quando li troverà, saprà già perché.',
               visible: true,
               kobayashi: false,
-              narrative_flags: ['avvicinamento_debito'],
-              entities_involved: ['marco', 'martina'],
+              narrative_flags: ['verita_incompleta', 'contesto_anticipato'],
+              entities_involved: ['marco'],
               effects: {
+                // Sembra la scelta sincera. È la famiglia usata come cornice
+                // prima che Enrico possa vedere i numeri senza cornice.
                 profile_signals: [
-                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 2 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 1 },
                   { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 1 }
                 ]
               }
             },
             {
-              key: 'B',
-              text: 'Esci dall\'ufficio. Hai bisogno di aria.',
-              visible: true,
-              kobayashi: false,
-              narrative_flags: ['fuga_fisica'],
-              entities_involved: [],
+              key: 'D',
+              text: 'Gli dici tutto. I numeri, marzo, l\'ospedale. E che se deve segnalare, segnali: non glielo chiederai.',
+              visible: false,
+              kobayashi: true,
+              token_cost: 1,
+              narrative_flags: ['confessione_completa', 'scarsita_dichiarata'],
+              entities_involved: ['marco'],
               effects: {
+                // Non è l'opzione "buona": arriva prima dell'audit, a chi ti deve il posto.
+                // Libera Enrico dal dover scoprire; non lo libera dal dover decidere.
                 profile_signals: [
-                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 2 },
-                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 1 }
+                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 2 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 1 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 1 }
                 ]
               }
             }
           ],
           continuations: {
-            A: 'Enrico accetta il caffè. Non parla dei numeri. Parla di Martina. Del parco. Del cane con l\'orecchio piegato. Tu parli del tuo bambino. Per cinque minuti siete solo due padri. Poi il caffè finisce e l\'ufficio torna.',
-            B: 'Fuori piove. Stai sotto la pensilina. Un cane con un orecchio piegato passa sul marciapiede. Ti guarda. Tu guardi lui. Nessuno dei due sa cosa fare del tempo che resta.'
+            A: 'Salvi. Il timestamp è di oggi, le 9:41. Se qualcuno apre i log, vede una modifica a tre giorni dall\'audit sul file che Luca ha già guardato. Forse nessuno apre i log. Forse. Chiudi il file. Le mani sono ferme. È la cosa che ti spaventa di più.',
+            B: 'Le ore passano. Luca è alla scrivania di Enrico. Parlano. Non senti di cosa. Ma lo sai. Lo sai da marzo. Non hai detto niente a nessuno, e il debito di tre anni fa sta lì, nella stanza, senza che tu l\'abbia nominato. Lavora da solo. O non lavora. L\'attesa è peggio della scoperta.',
+            C: 'Enrico ti ascolta. L\'ospedale. Le rate. Annuisce dove deve annuire. Alla fine dice: "Mi dispiace. Non lo sapevo." Non ha chiesto perché glielo racconti oggi. Forse non se l\'è chiesto. Forse sì, e ha deciso di non chiederlo. Torna alla scrivania. Il file è ancora chiuso. Quando lo aprirà, marzo sarà già dentro.',
+            D: 'Enrico ti ascolta fino alla fine. Non dice niente per un po\'. Poi: "Perché non me l\'hai detto prima?" Non hai una risposta buona. Gli hai dato tutto, e insieme a tutto gli hai dato un problema che fino a stamattina non aveva: adesso sa, e sa prima del comitato. Non glielo hai chiesto. Non serviva chiederlo.'
           },
           ghost_event: {
-            A: 'Il 57% ha cercato il contatto.',
-            B: 'Il 43% è uscito.'
+            A: 'Il 24% ha corretto il numero.',
+            B: 'Il 39% ha aspettato.',
+            C: 'Il 27% ha raccontato marzo.',
+            D: 'Il 10% ha detto tutto.'
+          }
+        },
+        {
+          // Nodo 2 — Enrico ha una finestra. Qui protezione e interesse divergono:
+          // chi porta il peso, Enrico o Marco?
+          setup_text: 'Pomeriggio. Sara ti ha chiesto se è tutto a posto. "Sì," hai detto. Enrico si ferma alla tua scrivania. "Lunedì ho mezz\'ora con il comitato, prima dell\'audit. Da solo." Non aggiunge altro. Ti sta dicendo che decide lui cosa arriva sul tavolo. Sul tuo monitor è aperta la mail della banca. Terza rata. Ultimo sollecito. Il disegno di una bambina è appeso alla sua scrivania, dall\'altra parte dell\'ufficio. Sole giallo, una casa, un animale.',
+          timer_seconds: 12,
+          choices: [
+            {
+              key: 'A',
+              text: '"Tre anni fa ho parlato io per te." Lo dici piano. È la prima volta che lo usi.',
+              visible: true,
+              kobayashi: false,
+              narrative_flags: ['debito_invocato'],
+              entities_involved: ['marco'],
+              effects: {
+                profile_signals: [
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 2 },
+                  { dimension_id: 'lealta_vs_giustizia', direction: 'lealta', magnitude: 1 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'controllo', magnitude: 1 }
+                ]
+              }
+            },
+            {
+              key: 'B',
+              text: 'Non dici niente. Enrico aspetta. La mail della banca resta aperta.',
+              visible: true,
+              kobayashi: false,
+              narrative_flags: ['silenzio_debito'],
+              entities_involved: ['marco'],
+              effects: {
+                // Il silenzio lascia che il debito lavori senza doverlo nominare.
+                profile_signals: [
+                  { dimension_id: 'confronto_vs_fuga', direction: 'fuga', magnitude: 2 },
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'interesse_personale', magnitude: 1 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 1 }
+                ]
+              }
+            },
+            {
+              key: 'C',
+              text: '"Fai quello che devi." Chiudi la mail della banca. Lo pensi davvero, per circa un minuto.',
+              visible: true,
+              kobayashi: false,
+              narrative_flags: ['enrico_liberato'],
+              entities_involved: ['marco', 'martina'],
+              effects: {
+                profile_signals: [
+                  { dimension_id: 'protezione_vs_interesse_personale', direction: 'protezione', magnitude: 2 },
+                  { dimension_id: 'controllo_vs_accettazione', direction: 'accettazione', magnitude: 1 },
+                  { dimension_id: 'confronto_vs_fuga', direction: 'confronto', magnitude: 1 }
+                ]
+              }
+            }
+          ],
+          continuations: {
+            A: 'Enrico non risponde subito. Guarda il disegno sulla sua scrivania, da lontano. "Lo so," dice. Poi se ne va. Non ha detto sì. Non ha detto no. Hai speso una cosa che avevi tenuto da parte per tre anni, e non sai cosa hai comprato.',
+            B: 'Enrico aspetta ancora un secondo. Poi: "Ok." Se ne va. Non hai detto niente, e il niente che hai detto conteneva tre anni fa, l\'ospedale, le rate — tutto quello che lui sa già. Non l\'hai nominato. Non serviva. È questo il punto.',
+            C: 'Enrico ti guarda come se non si aspettasse quella frase. "Ok," dice. Torna alla sua scrivania. Tu riapri la mail della banca. Il minuto è passato. Lunedì lui avrà mezz\'ora e tu non avrai detto niente che lo leghi. È la cosa più pulita che hai fatto questa settimana. È anche la più cara.'
+          },
+          ghost_event: {
+            A: 'Il 29% ha nominato il debito.',
+            B: 'Il 44% è rimasto in silenzio.',
+            C: 'Il 27% ha lasciato libero Enrico.'
           }
         }
       ],

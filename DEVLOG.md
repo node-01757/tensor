@@ -158,9 +158,18 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
 - **Reveal**: fix bug `'Lealtà'.toLowerCase() !== 'lealta'` (conteggio sbagliato e label contraddizione mancante); rimosso il fallback `Math.ceil(total*0.6)` che inventava frequenze
 - **Validatore** `tools/validate.mjs` + test `tools/test-profiler.mjs` (11 test)
 
+### Scene di Marco riscritte (v0.3.1)
+Principio: non adattare il personaggio allo strumento. I prototipi restano, i segnali cambiano.
+- **Mercoledì (Complice)**: 3 nodi. Gomitata → Enrico apre ("Il nome di Luca non c'era") e Marco decide
+  quale verità consegnare e a chi → la macchinetta, dove il sistema offre di delegare il costo.
+  `compliance` = la verità resta nel canale privato; `reframing` = qualcosa diventa visibile a chi paga.
+  La Kobayashi del nodo 2 ("E tu sei rimasto seduto") è la frase più onesta e la più strategica: segna anche `controllo`.
+- **Venerdì (Sopravvissuto)**: nodo 1 ternario (+ Kobayashi, timer 15s): controllare la prova / rinunciare /
+  consegnare una verità incompleta. La verità incompleta (marzo senza i numeri) segna `interesse_personale`,
+  non `protezione`: è la famiglia usata come cornice. Nodo 2: la finestra di Enrico col comitato —
+  invocare il debito / tacere / liberarlo. Nessuna opzione è pulita.
+
 ### Warning aperti dal validatore (decisioni editoriali, non bug)
-- `marco/riunione_mercoledi` (il_complice): la primaria `compliance_vs_reframing` non riceve segnali
-- `marco/audit_venerdi` (il_sopravvissuto): la primaria `protezione_vs_interesse_personale` non riceve segnali
 - Tutte le 12 scene sono dominio `sociale` → con "La Settimana" da sola **nessuna dimensione può diventare stabile** (serve ≥2 domini). È coerente con lo schema, ma va saputo
 
 ### v0.1 (commit iniziale)
