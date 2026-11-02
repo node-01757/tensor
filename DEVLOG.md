@@ -91,12 +91,13 @@ npm run serve             # http://localhost:8000
 
 > Nota v0.3: il DEVLOG v0.2.1 diceva "13/13" ma i file erano 12 e mancava proprio `il_testimone`,
 > il prototipo più usato dalle scene (4 su 12). Ora estratto dall'esempio canonico in
-> `TENSOR_schemas_v1.md §3` (status: draft). **Manca ancora `la_maschera`** (Sara, mercoledì).
+> `TENSOR_schemas_v1.md §3` (status: draft). `la_maschera` scritta in v0.3 (draft).
 
-### Territorio sociale (8)
+### Territorio sociale (9)
 | File | ID | Dimensione primaria |
 |------|-----|---------------------|
 | TESTIMONE.json | il_testimone | conformismo_vs_autonomia *(draft, da schema)* |
+| MASCHERA.json | la_maschera | confronto_vs_fuga + controllo_vs_accettazione *(draft)* |
 | CUSTODE.json | il_custode | protezione_vs_interesse_personale |
 | DEBITORE.json | il_debitore | lealta_vs_giustizia |
 | TRADITORE.json | il_traditore | lealta_vs_giustizia |
@@ -160,7 +161,6 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
 ### Warning aperti dal validatore (decisioni editoriali, non bug)
 - `marco/riunione_mercoledi` (il_complice): la primaria `compliance_vs_reframing` non riceve segnali
 - `marco/audit_venerdi` (il_sopravvissuto): la primaria `protezione_vs_interesse_personale` non riceve segnali
-- `sara/riunione_mercoledi`: DNA `la_maschera` inesistente → misure provvisorie tutte incidental
 - Tutte le 12 scene sono dominio `sociale` → con "La Settimana" da sola **nessuna dimensione può diventare stabile** (serve ≥2 domini). È coerente con lo schema, ma va saputo
 
 ### v0.1 (commit iniziale)
@@ -188,7 +188,7 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
 ## Cosa manca — Roadmap
 
 ### Fase 1: Profiling engine (PRIORITÀ)
-> v0.3: punti 1 e 2 fatti (✅), punto 3 parziale. Restano: DNA `la_maschera`, selezione adattiva,
+> v0.3: punti 1 e 2 fatti (✅), punto 3 parziale. Restano: selezione adattiva,
 > contraddizioni basate su `for_contradiction_reveal` dei DNA, gating del reveal per fase di confidenza.
 
 1. ✅ **Profiling engine** (`profiler.js`)

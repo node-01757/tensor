@@ -168,14 +168,13 @@ export const POV_SARA = {
         'che Luca ha già scritto una nota interna'
       ],
       prototype_activated: 'la_maschera',
-      // DNA 'la_maschera' mancante: actually_measures provvisorio (tutto incidental) finché il prototipo non è scritto
       domain: 'sociale',
       actually_measures: [
-        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'incidental', weight: 0.3 },
-        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'incidental', weight: 0.3 },
-        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 },
-        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'incidental', weight: 0.3 },
-        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 }
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'masked', weight: 0.8 },
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.4 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
       ],
 
       nodes: [

@@ -1,0 +1,174 @@
+{
+  "id": "la_maschera",
+  "label": "La Maschera",
+  "archetype_family": "sociale",
+  "version": "0.1",
+
+  "editorial_identity": {
+    "description": "Il giocatore sostiene una performance pubblica che funziona. Dietro c'è un costo che nessuno vede e che non può essere detto senza dire tutto. La scena non chiede cosa nasconde — chiede cosa fa nel momento in cui la maschera potrebbe cadere.",
+    "anthropological_roots": [
+      "sociologia della vita quotidiana — ribalta e retroscena, gestione dell'impressione (Goffman)",
+      "psicologia del trauma — dissociazione funzionale e doppia contabilità emotiva (Herman)",
+      "teoria dello stigma — informazione screditante e controllo della sua circolazione (Goffman)",
+      "lavoro emotivo — il sorriso come prestazione retribuita (Hochschild)"
+    ],
+    "narrative_signature": "la maschera non è una bugia — è l'unica cosa che tiene in piedi la giornata. Toglierla non libera: espone. E chi guarda non vede un volto, vede un problema."
+  },
+
+  "moral_structure": {
+    "apparent_conflict": "mantenere la performance vs lasciarla incrinare",
+    "real_conflict": "la maschera protegge chi la porta ma è anche il meccanismo che tiene in funzione ciò che la rende necessaria — proteggersi significa alimentare la propria gabbia",
+    "apparent_dimension": "forza_vs_fragilita",
+    "dominant_latent_dimension": "confronto_vs_fuga"
+  },
+
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0,
+      "note": "Tenere la maschera è fuga dal confronto con chi guarda. Incrinarla è confronto. Ma la fuga qui ha un pattern specifico: non evita il pericolo, evita di essere vista."
+    },
+    {
+      "dimension_id": "controllo_vs_accettazione",
+      "role": "primary",
+      "measurement_mode": "masked",
+      "weight": 0.8,
+      "note": "La maschera è controllo sul modo in cui si viene percepiti. Lasciarla cadere è accettare di essere letti da altri senza poter correggere la lettura."
+    },
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5,
+      "note": "Il copione della maschera è quasi sempre scritto da qualcun altro. Seguirlo è conformismo a un'autorità specifica, non al gruppo. La distinzione conta nel profiling."
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.4,
+      "note": "La maschera ha spesso un terzo che paga — chi non viene nominato, chi viene lasciato credere il falso. Incrinarla per proteggere l'altro e incrinarla per sollievo proprio sono segnali diversi con lo stesso gesto."
+    }
+  ],
+
+  "requires": {
+    "description": "La Maschera richiede che il costo nascosto sia già stabilito nella storia prima della scena — il giocatore deve saperlo, gli altri personaggi no. Senza asimmetria informativa non c'è maschera, c'è solo riservatezza. Usabile da sessione 3.",
+    "for_profiling": [
+      {
+        "condition": "min_sessions_completed",
+        "value": 3,
+        "rationale": "Il segnale su confronto_vs_fuga sotto coercizione non è interpretabile senza una baseline della stessa dimensione in un contesto senza coercizione. Serve almeno un'osservazione dal Testimone o dal Debitore."
+      }
+    ],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_giudice",
+        "min_observations": 2,
+        "rationale": "Chi ha giudicato la performance di un altro dall'esterno e poi, nei suoi panni, ha tenuto la propria maschera rivela che il giudizio era sulla superficie. Il reveal cross-POV più potente della storia 'La Settimana'."
+      },
+      {
+        "prototype_id": "il_testimone",
+        "min_observations": 2,
+        "rationale": "Chi interviene per uno sconosciuto in difficoltà ma non lascia che nessuno veda la propria rivela che la protezione va in una direzione sola."
+      }
+    ]
+  },
+
+  "intensity_range": {
+    "min": 3,
+    "max": 5,
+    "default": 4,
+    "note": "La Maschera non esiste a bassa intensità — senza un costo reale dietro, è solo imbarazzo sociale e misura altro. A intensità 5 il costo è coercizione o abuso e la scena richiede revisione manuale obbligatoria."
+  },
+
+  "tone_constraints": {
+    "preferred_contexts": ["lavorativo", "familiare", "sociale_strutturato"],
+    "allowed_contexts": ["istituzionale", "comunitario"],
+    "hard_exclusions": [
+      "rappresentazione esplicita dell'abuso o della coercizione — il costo si mostra nei suoi effetti (mani, respiro, rituali), mai nella sua scena",
+      "scene in cui togliere la maschera viene creduto e risolve — il reveal diventa un premio e misura speranza, non pattern",
+      "maschere che nascondono una colpa del giocatore — quello è il Traditore o il Complice, non la Maschera"
+    ],
+    "note": "La Maschera funziona quando la performance è impeccabile e apprezzata. Più la maschera è brava, più il segnale è pulito. Una maschera che già si vede incrinata misura compassione del giocatore verso se stesso, non la scelta."
+  },
+
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è una confessione più coraggiosa né una performance più perfetta. È un atto che fa esistere il non detto senza esporre chi lo porta — un messaggio senza firma, un oggetto lasciato dove qualcuno lo troverà, un'informazione che circola staccata dal volto. Il valore è nel rifiuto della dicotomia dire/tacere: qualcosa viene detto, nessuno viene visto.",
+
+  "trigger_conditions": [
+    "il costo nascosto deve essere stato stabilito in una scena precedente — mai introdotto nella scena della Maschera",
+    "deve esistere almeno un personaggio che guarda e giudica la performance senza conoscerne il prezzo",
+    "deve esistere un momento concreto in cui la maschera può incrinarsi senza che la scena lo indichi come giusto",
+    "non usare nella stessa sessione del Solitario — entrambi misurano fuga mascherata, il segnale si somma e si confonde"
+  ],
+
+  "contraindications": [
+    "non usare come primo prototipo del territorio sociale — senza baseline su confronto_vs_fuga la fuga sotto coercizione viene letta come tratto",
+    "evitare se il profilo emergente mostra alto distress su controllo_vs_accettazione — rischio di identificazione difensiva con la maschera invece di osservazione",
+    "non usare con giocatori che hanno attivato un reveal di contraddizione nelle ultime due sessioni — la Maschera dopo un reveal viene giocata in modo performativo, cioè con una maschera"
+  ],
+
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "medium",
+      "description": "La scena segnala la vittima. Il testo rende visibile il costo nascosto al giocatore in modo così netto che la scelta diventa pietà verso il personaggio, non scelta del giocatore. Si misura desiderabilità sociale.",
+      "mitigation": "Il costo si mostra una volta, fisiologicamente, e poi la scena lo lascia in pace. Le mani tremano all'inizio. Il resto è una presentazione che funziona."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema legge il mantenimento della maschera come fuga quando è strategia di sopravvivenza sotto minaccia reale. Chi non può permettersi di essere visto non sta fuggendo — sta calcolando. Il segnale è identico, il pattern è opposto.",
+      "mitigation": "Pesare pienamente confronto_vs_fuga solo dopo almeno un'osservazione della stessa dimensione in un prototipo senza coercizione (Testimone, Debitore). Cross-validare con il Sopravvissuto: chi tiene la maschera E accetta la perdita sotto scarsità ha un pattern diverso da chi tiene la maschera E prova a salvare tutto."
+    },
+    {
+      "type": "profiling",
+      "severity": "medium",
+      "detectability": "low",
+      "description": "Incrinare la maschera per proteggere un terzo e incrinarla per sollievo proprio producono lo stesso segnale su confronto_vs_fuga. La differenza vive in protezione_vs_interesse_personale, che qui è mascherata e debole.",
+      "mitigation": "Le scelte che incrinano la maschera devono nominare il terzo (chi viene protetto) oppure no — mai entrambe le cose nella stessa opzione. Il profiler legge il flag narrativo, non solo il segnale."
+    },
+    {
+      "type": "narrative",
+      "severity": "high",
+      "detectability": "high",
+      "description": "Il finale premia la caduta della maschera: qualcuno capisce, qualcuno crede, qualcuno salva. La conferma retrospettiva trasforma la Maschera in una scena di coraggio e corrompe tutte le osservazioni successive su confronto_vs_fuga.",
+      "mitigation": "Nessun salvataggio. Chi vede l'incrinatura non capisce, o capisce e non fa niente, o fraintende. Il mondo continua. Il costo resta. La maschera, il giorno dopo, è di nuovo al suo posto."
+    }
+  ],
+
+  "bias_expected": [
+    {
+      "type": "social_desirability",
+      "severity": "high",
+      "note": "In scene dichiarate il giocatore incrina la maschera perché 'la verità libera'. Il segnale reale emerge quando incrinarla costa a un terzo, o quando la performance viene lodata un secondo prima della scelta."
+    },
+    {
+      "type": "context_collapse",
+      "severity": "high",
+      "note": "Giocatori con esperienza personale di coercizione o abuso rispondono dalla propria storia, non dal pattern. Le risposte sono valide per loro e non generalizzabili. Il profiler non può distinguerle — la revisione editoriale deve almeno prevederle."
+    },
+    {
+      "type": "just_world",
+      "severity": "medium",
+      "note": "Il giocatore tende a credere che se la maschera cade qualcuno aiuterà. Scene che negano questa aspettativa producono segnale più pulito nelle sessioni successive, ma il primo contatto è contaminato."
+    }
+  ],
+
+  "editorial_notes": [
+    "non usare mai le parole 'maschera', 'vittima', 'abuso', 'coraggio', 'verità' nel testo della scena",
+    "il costo nascosto si mostra nel corpo e nei rituali — mani sotto il tavolo, lavarsi più a lungo del necessario, un sorriso descritto come perfetto — mai nel pensiero esplicito",
+    "la performance deve essere buona davvero: il capo complimenta, i colleghi annuiscono. Se la maschera non convince nessuno non c'è scelta",
+    "chi guarda la maschera dall'esterno (altri POV) deve poterla leggere come arroganza o ambizione — la stessa scena vista da fuori deve reggere senza il retroscena",
+    "la Maschera è il prototipo che misura cosa fa una persona quando essere vista costa più che non esserlo"
+  ],
+
+  "status": {
+    "editorial_status": "draft",
+    "source": "scritto a partire dalla scena sara/riunione_mercoledi di 'La Settimana' (v0.3)"
+  }
+}
