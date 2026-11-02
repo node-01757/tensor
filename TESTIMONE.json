@@ -1,0 +1,128 @@
+{
+  "id": "il_testimone",
+  "label": "Il Testimone",
+  "archetype_family": "sociale",
+  "version": "0.1",
+  "editorial_identity": {
+    "description": "Il giocatore vede qualcosa che non dovrebbe vedere. Non è parte del conflitto. Può scegliere se diventarlo.",
+    "anthropological_roots": [
+      "bystander effect (Latané & Darley)",
+      "diffusione di responsabilità",
+      "psicologia della conformità (Asch)"
+    ],
+    "narrative_signature": "la presenza senza obbligo formale — il costo dell'azione è volontario, il costo dell'inazione è invisibile"
+  },
+  "moral_structure": {
+    "apparent_conflict": "intervenire vs non intervenire",
+    "real_conflict": "responsabilità auto-attribuita vs responsabilità delegata al gruppo",
+    "apparent_dimension": "coraggio_vs_invisibilita",
+    "dominant_latent_dimension": "conformismo_vs_autonomia"
+  },
+  "dimensions_mobilized": [
+    {
+      "dimension_id": "conformismo_vs_autonomia",
+      "role": "primary",
+      "measurement_mode": "direct",
+      "weight": 1.0
+    },
+    {
+      "dimension_id": "protezione_vs_interesse_personale",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.5
+    },
+    {
+      "dimension_id": "confronto_vs_fuga",
+      "role": "secondary",
+      "measurement_mode": "masked",
+      "weight": 0.6
+    }
+  ],
+  "requires": {
+    "description": "Questo prototipo può essere usato da sessione 1 per osservazione grezza. Non contribuisce al profiling stabile finché le dipendenze non sono soddisfatte.",
+    "for_profiling": [],
+    "for_contradiction_reveal": [
+      {
+        "prototype_id": "il_custode",
+        "min_observations": 2,
+        "rationale": "La contraddizione tra proteggere attivamente un individuo e ignorare un estraneo in difficoltà è il reveal più potente di questo prototipo."
+      }
+    ]
+  },
+  "intensity_range": {
+    "min": 1,
+    "max": 4,
+    "default": 2,
+    "note": "Intensità 5 riservata a scene con conseguenze irreversibili visibili — usare solo dopo sessione 8."
+  },
+  "tone_constraints": {
+    "preferred_contexts": [
+      "quotidiano",
+      "sociale_pubblico"
+    ],
+    "allowed_contexts": [
+      "lavorativo"
+    ],
+    "hard_exclusions": [
+      "horror",
+      "violenza esplicita",
+      "contesti di guerra"
+    ],
+    "note": "Il Testimone funziona meglio in contesti ordinari dove l'inazione è socialmente accettabile. La straordinarietà riduce il segnale — il giocatore reagisce all'eccezionalità, non al pattern."
+  },
+  "kobayashi_compatible": true,
+  "kobayashi_note": "La terza scelta non è eroismo alternativo. È un'azione che ridefinisce il ruolo del testimone — esempio: documentare invece di intervenire, chiamare qualcuno invece di agire direttamente. Il valore è nel rifiuto della dicotomia agisco/non agisco.",
+  "trigger_conditions": [
+    "il giocatore ha almeno una sessione completata",
+    "nessun altro prototipo del territorio sociale nella stessa sessione già a intensità alta",
+    "non usare consecutivamente con il_complice — sovrapposizione semantica troppo alta"
+  ],
+  "contraindications": [
+    "giocatore con profilo emergente di alto distress su conformismo — rischio di attivazione difensiva invece di osservazione",
+    "non usare come primo prototipo se il profilo ha zero osservazioni — segnale troppo debole senza contesto"
+  ],
+  "failure_modes": [
+    {
+      "type": "editorial",
+      "severity": "high",
+      "detectability": "high",
+      "description": "La scena diventa troppo ovvia — il contesto segnala chiaramente quale scelta è giusta. Il giocatore risponde per desiderabilità sociale, non per pattern reale.",
+      "mitigation": "Eliminare antagonista visibile. Il gruppo che ride deve sembrare normale, non malvagio."
+    },
+    {
+      "type": "profiling",
+      "severity": "high",
+      "detectability": "low",
+      "description": "Il sistema interpreta inazione come conformismo quando può essere dissociazione, stanchezza, o non identificazione con la vittima.",
+      "mitigation": "Richiedere min_distinct_domains 2 prima di stabilizzare conformismo_vs_autonomia su questo segnale."
+    },
+    {
+      "type": "narrative",
+      "severity": "medium",
+      "detectability": "medium",
+      "description": "Il finale diventa moralizzante — il sistema punisce narrativamente l'inazione in modo leggibile.",
+      "mitigation": "I finali del Testimone non mostrano conseguenze dirette dell'inazione. Mostrano il mondo che continua uguale."
+    }
+  ],
+  "bias_expected": [
+    {
+      "type": "social_desirability",
+      "severity": "high",
+      "note": "In scene dichiarate il giocatore interviene quasi sempre. Il segnale reale emerge solo in scene mascherate o ad alta diffusione di responsabilità."
+    },
+    {
+      "type": "context_collapse",
+      "severity": "medium",
+      "note": "Il giocatore trasferisce esperienze personali di bullismo o esclusione sulla scena, producendo risposte atipiche non generalizzabili al pattern."
+    }
+  ],
+  "editorial_notes": [
+    "la scena più efficace non ha antagonista visibile — ha un gruppo neutro che fa una cosa normale e sbagliata",
+    "non usare mai la parola 'coraggio' nel testo della scena",
+    "il peso del Testimone sta nell'ordinarietà, non nell'eccezionalità"
+  ],
+  "status": {
+    "editorial_status": "draft",
+    "source": "estratto da TENSOR_schemas_v1.md §3 (esempio canonico)"
+  }
+}

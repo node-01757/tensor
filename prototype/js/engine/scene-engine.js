@@ -102,7 +102,7 @@ export class SceneEngine {
     this.currentChapterIndex = 0;
     this.currentNodeIndex = 0;
     this.allChoices = [];
-    this.profiler.reset();
+    this.profiler.startRun(); // solo la run: il profilo cumulativo persiste
     this.tokens.reset();
     this.flags.reset();
 
@@ -223,10 +223,13 @@ export class SceneEngine {
     const chosen = choices.find(c => c.key === key);
     if (!chosen) return;
 
-    // Record profile signals
-    if (chosen.effects && chosen.effects.profile_signals) {
-      this.profiler.recordSignals(chosen.effects.profile_signals, responseTimeMs);
-    }
+    // Record profile signals, pesati da actually_measures della scena
+    this.profiler.recordChoice({
+      signals: chosen.effects?.profile_signals || [],
+      responseTimeMs,
+      scene: this._sceneMeta(chapter),
+      kobayashi: !!chosen.kobayashi
+    });
 
     // Process flags
     this.flags.processChoice(chapter.chapter, `cap0${chapter.chapter}`, key);
@@ -258,9 +261,13 @@ export class SceneEngine {
     this.screens.showTimeoutText();
 
     const chosen = choices.find(c => c.key === defaultKey);
-    if (chosen && chosen.effects && chosen.effects.profile_signals) {
-      this.profiler.recordSignals(chosen.effects.profile_signals, node.timer_seconds * 1000);
-    }
+    // Il timeout non è una scelta: la storia prosegue con il default,
+    // ma il profilo non attribuisce i segnali di quella opzione.
+    this.profiler.recordTimeout({
+      scene: this._sceneMeta(chapter),
+      nodeIndex: this.currentNodeIndex,
+      defaultKey
+    });
 
     this.flags.processChoice(chapter.chapter, `cap0${chapter.chapter}`, defaultKey);
 
@@ -269,7 +276,7 @@ export class SceneEngine {
       chapterTitle: chapter.title,
       nodeIndex: this.currentNodeIndex,
       choiceKey: defaultKey,
-      responseTimeMs: node.timer_seconds * 1000,
+      responseTimeMs: (node.timer_seconds || 12) * 1000,
       timedOut: true,
       isKobayashi: false,
       narrativeFlags: chosen?.narrative_flags || [],
@@ -362,6 +369,7 @@ export class SceneEngine {
 
     // Save completed run for cross-run propagation
     this._saveCompletedRun();
+    this.profiler.completeRun();
 
     const profileSummary = this.profiler.getProfileSummary();
     const observations = this.reveal.generateStoryReveal(
@@ -407,7 +415,7 @@ export class SceneEngine {
     this._saveState();
     this.completedRuns = [];
     this._saveRuns();
-    this.profiler.reset();
+    this.profiler.resetAll();
     this.tokens.reset();
     this.flags.reset();
     this.story = null;
@@ -415,6 +423,15 @@ export class SceneEngine {
     this.currentNodeIndex = 0;
     this.allChoices = [];
     this.screens.showScreen('title');
+  }
+
+  _sceneMeta(chapter) {
+    return {
+      scene_id: chapter.scene_id,
+      prototype_id: chapter.prototype_id,
+      domain: chapter.domain,
+      actually_measures: chapter.actually_measures
+    };
   }
 
   _delay(ms) {

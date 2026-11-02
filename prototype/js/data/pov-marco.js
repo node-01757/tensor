@@ -17,6 +17,13 @@ export const POV_MARCO = {
       knows: ['la chiamata è dal lavoro — ti stanno chiedendo dei numeri', 'Enrico è lì con la figlia', 'tuo figlio gioca'],
       doesnt_know: ['che tuo figlio ha preso il cappellino', 'che Enrico ti sta osservando', 'cosa pensa Enrico di te'],
       prototype_activated: 'il_testimone',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.6 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Lunedì sera al parco. Tuo figlio gioca nella sabbia. Enrico è sulla panchina accanto con Martina, la bambina con le treccine nere. Il telefono vibra. È il lavoro. I numeri del trimestrale — qualcuno ha fatto domande. Non è ancora un problema. Ma potrebbe diventarlo. Un cane randagio con un orecchio piegato dorme vicino a voi.',
@@ -130,6 +137,15 @@ export const POV_MARCO = {
       knows: ['Sara si prende i meriti di Luca', 'Enrico sa', 'tu dai la gomitata per vedere come reagisce'],
       doesnt_know: ['se Enrico parlerà', 'se Luca sa che tu sai'],
       prototype_activated: 'il_complice',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'masked', weight: 0.8 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Riunione. Sara presenta. Tu sai che metà del lavoro è di Luca — ma non ti riguarda. Quello che ti riguarda è Enrico seduto accanto a te. Gli dai una gomitata. Vuoi vedere come reagisce. Perché venerdì Enrico guarderà i tuoi numeri. E ti serve sapere che tipo di persona è. Adesso. Prima che sia tardi.',
@@ -227,6 +243,14 @@ export const POV_MARCO = {
       knows: ['hai aggiustato i numeri', 'Enrico li troverà', 'perché lo hai fatto — il motivo è personale e reale'],
       doesnt_know: ['se Enrico ti coprirà', 'se la mail anonima ha già attivato qualcosa'],
       prototype_activated: 'il_sopravvissuto',
+      domain: 'corpo',
+      actually_measures: [
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'masked', weight: 0.8 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'masked', weight: 0.4 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           // CROSS-RUN: se il giocatore ha già giocato Enrico, qui vede le conseguenze
@@ -342,6 +366,13 @@ export const POV_MARCO = {
       knows: ['è domenica', 'la settimana è finita', 'non sai cosa farà Enrico domani'],
       doesnt_know: ['cosa sta succedendo alla fermata dove va Martina', 'se Enrico ha firmato o no'],
       prototype_activated: 'il_testimone',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.6 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Domenica. Sei a casa. Tuo figlio guarda i cartoni. Tua moglie legge. Il telefono è spento. Dal balcone vedi la strada. Una fermata dell\'autobus. Un gruppo di ragazzi. Un ragazzo che raccoglie qualcosa da terra. Una bambina con treccine nere che tira la manica di un uomo. Da qui non senti niente. Vedi solo gesti.',

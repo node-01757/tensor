@@ -1,8 +1,8 @@
 # TENSOR — Development Log
 
-## Stato attuale: v0.2 — Prototype multi-POV funzionante
+## Stato attuale: v0.3 — Profiler v1 + binding scene↔DNA
 
-**Ultimo aggiornamento:** 2026-03-13
+**Ultimo aggiornamento:** 2026-11-02
 
 ---
 
@@ -41,7 +41,7 @@ TENSOR/
     │   │   └── pov-sara.js    # POV Sara (4 scene, arco oscuro)
     │   ├── engine/
     │   │   ├── scene-engine.js    # Core: flusso multi-POV, cross-run flags
-    │   │   ├── profiler.js        # Profiling morale (da implementare)
+    │   │   ├── profiler.js        # Profiler v1: run + profilo cumulativo persistente
     │   │   ├── reveal-engine.js   # Reveal cross-POV + Sara-specific
     │   │   ├── flag-engine.js     # Gestione flag narrative
     │   │   ├── ghost-events.js    # Eventi fantasma
@@ -50,6 +50,20 @@ TENSOR/
     │   └── ui/
     │       ├── screens.js         # Rendering schermate + POV cards
     │       └── typewriter.js      # Effetto typewriter
+│
+├── tools/
+│   ├── validate.mjs           # Validatore scene ↔ DNA ↔ dimensioni
+│   └── test-profiler.mjs      # Test unitari profiler (node:test)
+└── package.json               # Solo script di sviluppo, zero dipendenze
+```
+
+### Comandi di sviluppo
+
+```bash
+npm run validate          # errori → exit 1; warning editoriali stampati
+npm run validate:strict   # anche i warning fanno fallire
+npm test                  # test profiler
+npm run serve             # http://localhost:8000
 ```
 
 ### Concetti chiave
@@ -73,11 +87,16 @@ TENSOR/
 
 ---
 
-## DNA Prototipi — Pool completo (13/13)
+## DNA Prototipi — 13 file
 
-### Territorio sociale (7)
+> Nota v0.3: il DEVLOG v0.2.1 diceva "13/13" ma i file erano 12 e mancava proprio `il_testimone`,
+> il prototipo più usato dalle scene (4 su 12). Ora estratto dall'esempio canonico in
+> `TENSOR_schemas_v1.md §3` (status: draft). **Manca ancora `la_maschera`** (Sara, mercoledì).
+
+### Territorio sociale (8)
 | File | ID | Dimensione primaria |
 |------|-----|---------------------|
+| TESTIMONE.json | il_testimone | conformismo_vs_autonomia *(draft, da schema)* |
 | CUSTODE.json | il_custode | protezione_vs_interesse_personale |
 | DEBITORE.json | il_debitore | lealta_vs_giustizia |
 | TRADITORE.json | il_traditore | lealta_vs_giustizia |
@@ -123,6 +142,27 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
 
 ## Cosa è stato fatto
 
+### v0.3 — Profiler v1 e binding scene↔DNA
+- **Bug critico risolto**: `selectPov()` chiamava `profiler.reset()` → il profilo veniva cancellato a ogni run. Ora c'è un profilo di *run* (azzerato a ogni POV, alimenta il reveal) e un profilo *cumulativo* persistente (`localStorage: tensor_profile_v1`)
+- **Profiler v1** (`profiler.js`):
+  - segnali pesati da `actually_measures` della scena (`weight` × modulazione response time)
+  - dimensioni non dichiarate dalla scena → `incidental`, peso 0.3
+  - tracking per dimensione: modi (direct/masked/incidental), prototipi, domini
+  - stabilità secondo schema §2: min 4 osservazioni, ≥2 prototipi, ≥2 domini, masked ratio ≤ 0.7
+  - fasi di confidenza schema §5 (`silent` / `light` / `calibrated` / `meta`) su sessioni completate
+  - `getContradictions()` cumulativo, solo su dimensioni stabili
+  - **timeout ≠ scelta**: registrato a parte, non sposta più i punteggi (prima attribuiva i segnali dell'opzione B)
+- **Scene annotate**: tutte le 12 scene hanno `domain` + `actually_measures` (derivati dal DNA; dimensioni extra → incidental)
+- **ID prototipi normalizzati**: `la_sopravvissuta/la_complice/la_testimone` → `il_*` (il DNA è unico, il genere è del personaggio)
+- **Reveal**: fix bug `'Lealtà'.toLowerCase() !== 'lealta'` (conteggio sbagliato e label contraddizione mancante); rimosso il fallback `Math.ceil(total*0.6)` che inventava frequenze
+- **Validatore** `tools/validate.mjs` + test `tools/test-profiler.mjs` (11 test)
+
+### Warning aperti dal validatore (decisioni editoriali, non bug)
+- `marco/riunione_mercoledi` (il_complice): la primaria `compliance_vs_reframing` non riceve segnali
+- `marco/audit_venerdi` (il_sopravvissuto): la primaria `protezione_vs_interesse_personale` non riceve segnali
+- `sara/riunione_mercoledi`: DNA `la_maschera` inesistente → misure provvisorie tutte incidental
+- Tutte le 12 scene sono dominio `sociale` → con "La Settimana" da sola **nessuna dimensione può diventare stabile** (serve ≥2 domini). È coerente con lo schema, ma va saputo
+
 ### v0.1 (commit iniziale)
 - Prototipo lineare con POV Enrico
 - Engine base: scene, scelte, flag, timer, token, reveal
@@ -148,21 +188,22 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
 ## Cosa manca — Roadmap
 
 ### Fase 1: Profiling engine (PRIORITÀ)
-> I DNA esistono ma il motore non li usa. Le scelte non vengono misurate.
+> v0.3: punti 1 e 2 fatti (✅), punto 3 parziale. Restano: DNA `la_maschera`, selezione adattiva,
+> contraddizioni basate su `for_contradiction_reveal` dei DNA, gating del reveal per fase di confidenza.
 
-1. **Profiling engine** (`profiler.js` — esiste come stub, da implementare)
+1. ✅ **Profiling engine** (`profiler.js`)
    - Leggere le scelte del giocatore
    - Aggiornare punteggi sulle 6 dimensioni morali
    - Gestire measurement_mode (direct vs masked)
    - Applicare pesi per prototipo e dimensione
    - Persistere il profilo tra sessioni
 
-2. **Scene-DNA binding**
+2. ✅ **Scene-DNA binding**
    - Mapping tra scelte nei POV e prototipi che attivano
    - Ogni scelta deve sapere quale dimensione misura, con quale peso, in quale modo
    - Annotare le scene esistenti (Enrico, Marco, Sara) con metadata DNA
 
-3. **Profilo persistente (tensor del giocatore)**
+3. ◐ **Profilo persistente (tensor del giocatore)** — persistenza e stabilità fatte; selezione adattiva e contraddizioni DNA-based da fare
    - Struttura dati per il profilo morale cumulativo
    - Cross-story persistence (il profilo sopravvive tra storie settimanali)
    - Selezione adattiva dei prototipi basata sul profilo
@@ -177,7 +218,7 @@ cane, panchina, monete, telefono_marco, busta, ragazzo_monete, berlina, sara, pr
    - Input: DNA prototipo + contesto narrativo → Output: scena completa
    - Validazione automatica contro lo schema e i vincoli del DNA
 
-5. **Validatore scene**
+5. ◐ **Validatore scene** — v0.3 copre struttura e coerenza scene↔DNA; mancano tone_constraints e parole proibite
    - Verifica che le scene rispettino tone_constraints e hard_exclusions
    - Check editorial_notes (parole proibite, frame valoriali)
    - Verifica copertura dimensionale (ogni scena misura quello che deve misurare)

@@ -36,10 +36,12 @@ export class RevealEngine {
 
       const template = directionTemplates[Math.floor(Math.random() * directionTemplates.length)];
       const total = dim.observations;
-      const count = dim.tendency === dim.labelA?.toLowerCase() ? dim.countA : dim.countB;
+      const count = dim.tendency === dim.polarityA ? dim.countA : dim.countB;
+      // Mai inventare frequenze: se il polo dominante (per peso) non ha conteggi, si tace
+      if (!count) continue;
 
       const text = template
-        .replace('{count}', count || Math.ceil(total * 0.6))
+        .replace('{count}', count)
         .replace('{total}', total);
 
       observations.push(text);
@@ -52,8 +54,8 @@ export class RevealEngine {
       const ct = REVEAL_TEMPLATES.contradiction;
       const template = ct[Math.floor(Math.random() * ct.length)];
       const text = template
-        .replace('{action_a}', this._actionLabel(dim.dimensionId, dim.labelA?.toLowerCase()))
-        .replace('{action_b}', this._actionLabel(dim.dimensionId, dim.labelB?.toLowerCase()));
+        .replace('{action_a}', this._actionLabel(dim.dimensionId, dim.polarityA))
+        .replace('{action_b}', this._actionLabel(dim.dimensionId, dim.polarityB));
       observations.push(text);
     }
 

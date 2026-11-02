@@ -30,7 +30,16 @@ export const POV_SARA = {
         'che Marco è al telefono per i numeri — gli stessi numeri',
         'che Martina ti indicherà domani in un disegno che nessuno capirà'
       ],
-      prototype_activated: 'la_sopravvissuta',
+      prototype_activated: 'il_sopravvissuto',
+      domain: 'corpo',
+      actually_measures: [
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'masked', weight: 0.8 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'masked', weight: 0.4 },
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
+      ],
 
       nodes: [
         {
@@ -159,6 +168,15 @@ export const POV_SARA = {
         'che Luca ha già scritto una nota interna'
       ],
       prototype_activated: 'la_maschera',
+      // DNA 'la_maschera' mancante: actually_measures provvisorio (tutto incidental) finché il prototipo non è scritto
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 }
+      ],
 
       nodes: [
         {
@@ -289,7 +307,16 @@ export const POV_SARA = {
         'che Enrico sta decidendo se coprire Marco',
         'cosa farà il presidente se i numeri escono'
       ],
-      prototype_activated: 'la_complice',
+      prototype_activated: 'il_complice',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'masked', weight: 0.8 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'incidental', weight: 0.3 }
+      ],
 
       nodes: [
         {
@@ -420,7 +447,15 @@ export const POV_SARA = {
         'che il cane ti ha già vista lunedì',
         'cosa farà il ragazzo se scopre con chi'
       ],
-      prototype_activated: 'la_testimone',
+      prototype_activated: 'il_testimone',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.6 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
+      ],
 
       nodes: [
         {

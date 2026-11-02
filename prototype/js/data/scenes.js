@@ -56,6 +56,8 @@ export function buildStoryFromPov(pov) {
                 scene.scene_id === 'fermata_domenica' ? 'La fermata' : '',
       scene_id: scene.scene_id,
       prototype_id: scene.prototype_activated,
+      domain: scene.domain,
+      actually_measures: scene.actually_measures || [],
       entities_present: [], // derived from node choices
       nodes: scene.nodes,
       chapter_end_text: scene.scene_end_text || ''

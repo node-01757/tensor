@@ -14,6 +14,14 @@ export const POV_ENRICO = {
       knows: ['Martina si arrampica', 'Marco è al telefono', 'il cane è lì'],
       doesnt_know: ['perché Marco è al telefono', 'cosa pensa Martina del cane'],
       prototype_activated: 'il_custode',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'masked', weight: 0.9 },
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'masked', weight: 0.4 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Lunedì sera. Hai portato Martina al parco dopo una giornata lunga. Marco è sulla panchina accanto — giacca blu sbottonata, un bottone mancante, al telefono. Suo figlio gioca nella sabbia. Un cane randagio con un orecchio piegato dorme vicino ai giochi. Martina lo indica, poi corre verso la struttura più alta. Sbarre di metallo, vuoto sotto. Si gira e ti fa ciao con la mano.',
@@ -126,6 +134,14 @@ export const POV_ENRICO = {
       knows: ['Sara presenta risultati non suoi', 'Luca ha fatto metà del lavoro', 'Marco sa'],
       doesnt_know: ['cosa pensa Sara di quello che fa', 'perché Luca non parla'],
       prototype_activated: 'il_testimone',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.6 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Riunione di progetto. Sara presenta i risultati del trimestre. Metà di quel lavoro l\'ha fatto Luca, che è seduto in fondo e non dice niente. Lo sai perché hai visto le mail. Marco, accanto a te, ti dà una gomitata leggera. Anche lui sa. Sara sorride. Il capo la complimenta.',
@@ -238,6 +254,14 @@ export const POV_ENRICO = {
       knows: ['i numeri di Marco non tornano', 'Marco ti ha salvato il posto 3 anni fa', 'la mail si collega'],
       doesnt_know: ['perché Marco ha aggiustato i numeri', 'se Marco sa che tu sai'],
       prototype_activated: 'il_debitore',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'lealta_vs_giustizia', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.6 },
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.4 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Venerdì mattina. C\'è il disegno di Martina appeso alla scrivania — sole giallo, una casa, e qualcosa che potrebbe essere un animale. Luca ti chiama. "Guarda qui." Nel report trimestrale di Marco ci sono numeri che non tornano. Non è un errore — è un aggiustamento. Piccolo. Ma intenzionale. Quella mail senza firma — adesso ha senso. Marco ti ha salvato il posto tre anni fa. Ha parlato per te quando nessuno lo avrebbe fatto.',
@@ -350,6 +374,14 @@ export const POV_ENRICO = {
       knows: ['Martina è con te', 'il ragazzo raccoglie monete', 'il gruppo ride'],
       doesnt_know: ['chi è il ragazzo', 'chi è l\'uomo con la giacca'],
       prototype_activated: 'il_testimone',
+      domain: 'sociale',
+      actually_measures: [
+        { dimension_id: 'conformismo_vs_autonomia', measurement_mode: 'direct', weight: 1 },
+        { dimension_id: 'protezione_vs_interesse_personale', measurement_mode: 'masked', weight: 0.5 },
+        { dimension_id: 'confronto_vs_fuga', measurement_mode: 'masked', weight: 0.6 },
+        { dimension_id: 'controllo_vs_accettazione', measurement_mode: 'incidental', weight: 0.3 },
+        { dimension_id: 'compliance_vs_reframing', measurement_mode: 'incidental', weight: 0.3 }
+      ],
       nodes: [
         {
           setup_text: 'Domenica mattina. Porti Martina alla fermata — va dalla nonna. Un gruppo di ragazzi ride mentre un ragazzo con le mani sporche di terra raccoglie monete cadute. Zaino aperto, nessuno lo aiuta. Nessuno sembra davvero crudele. Un uomo aspetta alla fermata. Giacca blu sbottonata. Un bottone mancante. Non è Marco. Martina ti tira la manica. "Papà, perché ridono?"',
